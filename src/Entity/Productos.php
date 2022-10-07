@@ -50,9 +50,15 @@ class Productos
      */
     private $idCat;
 
+    /**
+     * @ORM\OneToMany(targetEntity=ProductosPedidos::class, mappedBy="codProducto", orphanRemoval=true)
+     */
+    private $idProPedidos;
+
     public function __construct()
     {
         $this->imagenes = new ArrayCollection();
+        $this->idProPedidos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -146,6 +152,36 @@ class Productos
     public function setIdCat(?Categorias $idCat): self
     {
         $this->idCat = $idCat;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ProductosPedidos>
+     */
+    public function getIdProPedidos(): Collection
+    {
+        return $this->idProPedidos;
+    }
+
+    public function addIdProPedido(ProductosPedidos $idProPedido): self
+    {
+        if (!$this->idProPedidos->contains($idProPedido)) {
+            $this->idProPedidos[] = $idProPedido;
+            $idProPedido->setCodProducto($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIdProPedido(ProductosPedidos $idProPedido): self
+    {
+        if ($this->idProPedidos->removeElement($idProPedido)) {
+            // set the owning side to null (unless already changed)
+            if ($idProPedido->getCodProducto() === $this) {
+                $idProPedido->setCodProducto(null);
+            }
+        }
 
         return $this;
     }
