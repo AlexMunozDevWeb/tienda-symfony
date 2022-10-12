@@ -1,0 +1,181 @@
+
+section.menu-section{
+  height: 80px;
+  position: fixed;
+  width: calc(100% - 20vw);
+  .main-navigation{
+    background-color: @white;
+    border-bottom: 1px solid @grayish-blue;
+    box-sizing: border-box;
+    display: flex;
+    height: inherit;
+    justify-content: space-between;
+    .left-side-menu{
+      display: flex;
+      align-items: center;
+      .menu-burger{
+        display: none;
+      }
+      .img-title{
+        cursor: pointer;
+        margin-right: 50px;
+        height: 30px;
+        width: auto;
+      }
+      .menu-links{
+        align-items: center;
+        display: flex;
+        cursor: pointer;
+        li{
+          align-items: center;
+          display: flex;
+          margin-right: 30px;
+          height: 80px;
+          position: relative;
+          transition: all .3s;
+          text-transform: capitalize;
+          .single-link{
+            color: @dark-grayish-blue;
+          }
+          &::before{
+            content: '';
+            display: block;
+            position: absolute;
+            height: 5px;
+            background: @orange;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            transition: all .3s;
+            transform: scaleX(0);
+          }
+          &:hover{
+            .single-link{
+              color: @black;
+            }
+            &:before{
+              transform: scaleX(1);
+            }
+          }
+        }
+      }
+    }
+    .right-side-menu{
+      align-items: center;
+      display: flex;
+      .cart-link, .user-link{
+        align-items: center;
+        display: flex;
+        cursor: pointer;
+        margin-right: 30px;
+        position: relative;
+        .icon-cart, .icon-user{
+          background-repeat: no-repeat;
+          display: block;
+          filter: invert(0%) sepia(33%) saturate(2732%) brightness(22%) contrast(0%);
+          transition: all .3s;
+          height: 21px;
+          width: 24px;
+          &:hover{
+            filter: invert(0%) sepia(33%) saturate(2732%) brightness(22%) contrast(100%);
+          }
+        }
+      }
+      .user-link{
+        margin-right: 0;
+      }
+      .cart-link{
+        .cart-content{
+          background-color: @white;
+          box-shadow: -4px 24px 41px -12px rgba(0,0,0,0.29);
+          border-radius: 10px;
+          cursor: auto;
+          position: absolute;
+          width: 350px;
+          height: 180px;
+          top: 36px;
+          right: -55px;
+          transition: all .3s;
+          opacity: 0;
+          &.open{
+            opacity: 1;
+          }
+          .title-cart, .item-description{
+            padding: 17px;
+          }
+          .separador{
+            background-color: @grayish-blue;
+            height: 1px;
+          }
+        }
+        .quantity{
+          align-items: center;
+          background-color: @orange;
+          border-radius: 50px;
+          font-size: 8px;
+          display: flex;
+          justify-content: center;
+          color: hsl(0, 0%, 100%);
+          position: absolute;
+          top: 0;
+          right: -5px;
+          height: 11px;
+          width: 20px;
+        }
+      } 
+    }
+  }
+  .menu-mobile{
+    display: none;
+    height: 0;
+  }
+  @media screen and( max-width: 768px ) {
+    width: calc(100% - 10vw);
+    .main-navigation{
+      .left-side-menu{
+        .menu-burger{
+          display: flex;
+          cursor: pointer;
+          margin-right: 15px;
+        }
+        .menu-links{
+          display: none;
+        }
+        .img-title{
+          margin-right: 25px;
+          height: 23px;
+        }
+      }
+    }
+    .menu-mobile{
+      background-color: rgba(0,0,0,.7);
+      backdrop-filter: blur(5px);
+      position: fixed;
+      height: 100vh;
+      top: 0;
+      right: 0;
+      width: 100vw;
+      &.open{
+        display: flex;
+      }
+      .content-menu-mobile{
+        background-color: @white;
+        padding: 5%;
+        width: 50%;
+        .close-icon{
+          cursor: pointer;
+          margin-bottom: 40px;
+        }
+        ul.links-mobile{
+          li{
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+

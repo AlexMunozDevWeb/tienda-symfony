@@ -10,7 +10,7 @@
 import './styles/app.less';
 
 //JS imports 
-import './js/main.js';
+import './js/menu.js';
 
 // start the Stimulus application
 import './bootstrap';
