@@ -55,6 +55,11 @@ class Productos
      */
     private $idProPedidos;
 
+    /**
+     * @ORM\Column(type="decimal", precision=8, scale=2)
+     */
+    private $precio;
+
     public function __construct()
     {
         $this->imagenes = new ArrayCollection();
@@ -182,6 +187,18 @@ class Productos
                 $idProPedido->setCodProducto(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPrecio(): ?int
+    {
+        return $this->precio;
+    }
+
+    public function setPrecio(int $precio): self
+    {
+        $this->precio = $precio;
 
         return $this;
     }
