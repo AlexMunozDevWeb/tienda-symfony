@@ -1,0 +1,59 @@
+.section-hero {
+  height: calc(100vh - 80px);
+  padding-top: 80px;
+}
+.section-hero .swiper-hero {
+  height: inherit;
+  position: relative;
+  width: 100%;
+}
+.section-hero .swiper-hero .wrapper-hero {
+  width: 80vw;
+}
+.section-hero .swiper-hero .wrapper-hero .slide-hero {
+  transform: translateX(12.5%);
+}
+.section-hero .swiper-hero .wrapper-hero .slide-hero .slider-img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+.section-hero .swiper-hero .arrow-container {
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  height: 60px;
+  width: 100%;
+  z-index: 10;
+}
+.section-hero .swiper-hero .arrow-container a.anchor {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  position: absolute;
+  left: calc(50% - 22px);
+  top: 0;
+  height: 100%;
+}
+.section-hero .swiper-hero .arrow-container a.anchor .img-go-down {
+  height: 44px;
+}
+.section-hero .swiper-hero .arrow-container a.anchor:hover {
+  animation: 1s rebote 1;
+}
+.section-hero .swiper-hero .arrow-container .swiper-button-prev .img-next,
+.section-hero .swiper-hero .arrow-container .swiper-button-next .img-next,
+.section-hero .swiper-hero .arrow-container .swiper-button-prev .img-prev,
+.section-hero .swiper-hero .arrow-container .swiper-button-next .img-prev {
+  filter: invert(100%);
+}
+.section-hero .swiper-hero .arrow-container .swiper-button-prev::after,
+.section-hero .swiper-hero .arrow-container .swiper-button-next::after {
+  content: '';
+}
+.contenido-extra {
+  background-color: gray;
+  height: 3000px;
+}

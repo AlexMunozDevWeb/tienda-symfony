@@ -3,5 +3,28 @@
 {% block title %}Página de inicio!{% endblock %}
 
 {% block body %}
-        Página de inicio
+  <section class="section-hero">
+    <div class="swiper swiper-hero">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper wrapper-hero">
+        <div class="swiper-slide slide-hero"><img class="slider-img" src="{{ asset( 'images/products/image-product-1.jpg' ) }}" alt="Imagen1"></div>
+        <div class="swiper-slide slide-hero"><img class="slider-img" src="{{ asset( 'images/products/image-product-2.jpg' ) }}" alt="Imagen2"></div>
+        <div class="swiper-slide slide-hero"><img class="slider-img" src="{{ asset( 'images/products/image-product-3.jpg' ) }}" alt="Imagen3"></div>
+        <div class="swiper-slide slide-hero"><img class="slider-img" src="{{ asset( 'images/products/image-product-4.jpg' ) }}" alt="Imagen4"></div>
+      </div>
+      <!-- If we need navigation buttons -->
+      <div class="arrow-container">
+        <div class="swiper-button-prev"><img class="img-prev" src="{{ asset('images/icon-previous.svg') }}" alt="Prev imagen"></div>
+        <div class="swiper-button-next"><img class="img-next" src="{{ asset('images/icon-next.svg') }}" alt="Prev imagen"></div>>
+        <a class="anchor" data-content="go-to-content">
+          <img class="img-go-down" src="{{ asset('images/go-down.svg') }}" alt="Ancla">
+        </a>
+      </div>
+
+    </div>
+    <div id="go-to-content"></div>    
+  </section>
+
+  <section class="contenido-extra">
+  </section>
 {% endblock %}

@@ -22,3 +22,21 @@ $( '#open-menu-mobile' ).on( 'click', function () {
 $( '#close-menu-mobile' ).on( 'click', function () {
   $( '.menu-mobile' ).removeClass( 'open' );
 } );
+
+// Detectar scroll para menui
+
+//Al hacer scroll el menu se hace mas pequeño
+jQuery(window).scroll(function() {
+
+  let altura = jQuery(window).scrollTop();
+  let altura_navegacion = jQuery('.menu-section').height();
+
+  if(!jQuery('.menu-section').hasClass('scroll') && jQuery(window).width() >= 1255 && altura > altura_navegacion){
+    jQuery('.menu-section').toggleClass('scroll');
+  }
+  
+  if(jQuery('.menu-section').hasClass('scroll') && jQuery(window).width() >= 1255 && altura <= altura_navegacion){
+    jQuery('.menu-section').toggleClass('scroll');
+  }
+  
+});

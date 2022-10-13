@@ -1,11 +1,17 @@
 
-section.menu-section{
+header.menu-section{
+  background-color: @white;
+  box-sizing: border-box;
   height: 80px;
   position: fixed;
-  width: calc(100% - 20vw);
+  width: 100%;
+  z-index: 50;
+  transition: all .3s ease-in-out;
+  &.scroll{
+    height: 60px;
+  }
   .main-navigation{
-    background-color: @white;
-    border-bottom: 1px solid @grayish-blue;
+    // border-bottom: 1px solid @grayish-blue;
     box-sizing: border-box;
     display: flex;
     height: inherit;
@@ -130,7 +136,7 @@ section.menu-section{
     height: 0;
   }
   @media screen and( max-width: 768px ) {
-    width: calc(100% - 10vw);
+    width: 100%;
     .main-navigation{
       .left-side-menu{
         .menu-burger{
