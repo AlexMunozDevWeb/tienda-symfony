@@ -17,9 +17,7 @@ const swiper = new Swiper('.swiper.swiper-hero', {
 
 jQuery('.anchor').click(function (e) {
   var puntero = $(this).data('content');
-  console.log(puntero);
   var distancia = $('div[id^="' + puntero + '"]').offset();
-  console.log(distancia);
   e.preventDefault();
   
   if ($(this).data('go-to-content') !== "all") {
