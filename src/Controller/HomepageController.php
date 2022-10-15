@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Categorias;
 use App\Entity\Productos;
 use App\Entity\Usuarios;
 use App\Form\UserType;
@@ -24,7 +23,7 @@ class HomepageController extends AbstractController
   }
 
   /**
-   * @Route("/homepage", name="app_homepage")
+   * @Route("/", name="app_homepage")
    */
   public function index( Request $request, UserPasswordHasherInterface $passwordHasher ): Response
   {
@@ -35,9 +34,8 @@ class HomepageController extends AbstractController
     $register_form->handleRequest( $request );
     if ( $register_form->isSubmitted() && $register_form->isValid() ) {
       $plainPassword = $register_form->get( 'password' )->getData();
-      $hashedPassword = $passwordHasher->hashPassword( $user, $plainPassword );
-
-      $user->setPassword($hashedPassword);
+      // $hashedPassword = $passwordHasher->hashPassword( $user, $plainPassword );
+      $user->setPassword($plainPassword);
       $user->setRoles(["Role_user"]);
       $user->setCorreo( $register_form->get( 'correo' )->getData() );
       $user->setDireccion( $register_form->get( 'direccion' )->getData() );

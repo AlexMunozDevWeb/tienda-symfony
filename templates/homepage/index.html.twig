@@ -30,11 +30,12 @@
     <h3>{{ pro_cat.nombre }}</h3>
         {% for product in products %}
           {% if product.id_cat_id == pro_cat.id %}
-            <a href="{{ app.request.uri }}productos/{{ product.id }}">{{ product.nombre }}</a><br>
+            <a href="/productos/{{ product.id }}">{{ product.nombre }}</a><br>
           {% endif %}
         {% endfor %}  
   </section>
   {% endfor %}
+
   <h3>Formulario de registro</h3>
   {{ form(registration_form)}}
 

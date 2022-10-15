@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+  <h3>Formulario login</h3>
+  {{ form(login_form)}}
+    {{ correo }}
+  {{ pass }}
+
+
+    VARIABLE SESSION -> {{ dump(session) }}
+  
+  {% if session %}
+    session iniciada correctamente
+    <a href="logout">Cerrar sesion</a>
+  {% endif %}
+  {% if session == false %}
+    session cerrada
+  {% endif %}
+{% endblock %}

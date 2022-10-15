@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Usuarios;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
@@ -54,6 +55,38 @@ class UsuariosRepository extends ServiceEntityRepository implements PasswordUpgr
         $user->setPassword($newHashedPassword);
 
         $this->add($user, true);
+    }
+
+    /**
+     * Comprobar credenciales
+     */
+    public function checkCredenciales( $correo = '', $pass = '' ){
+      $conn = $this->getEntityManager()->getConnection();
+      $sql = "SELECT * FROM usuarios WHERE correo = '$correo' AND password = '$pass'";
+      $stmt = $conn->prepare($sql);
+      $resultSet = $stmt->executeQuery();
+      return $resultSet->fetchAllAssociative();
+    }
+
+    /**
+     * Inicia session si existe un usuario.
+     */
+    public function sessionStart( $resolveSession ){
+
+      if( !empty( $resolveSession ) ){
+
+        if( session_status() === 1 ){
+          $session = new Session();
+          $session->start();
+        }
+
+        $_SESSION['correo'] = $resolveSession[0]["correo"];
+        $name = $_SESSION['correo']; 
+
+        return 'Session iniciada por ' . $name;
+      }else{
+        return;
+      }
     }
 
 //    /**

@@ -6,7 +6,7 @@
       <div class="menu-burger" id="open-menu-mobile">
         <img src="{{ asset( 'images/icon-menu.svg' ) }}" alt="Icon menu">
       </div>
-      <a href="">
+      <a href="{{ url('app_homepage') }}">
         <img class="img-title" src="{{ asset( 'images/logo.svg' ) }}" alt="Logo">
       </a>
       <ul class="menu-links">
@@ -30,9 +30,9 @@
           </div>
         </div>
       </div>
-      <div class="user-link">
+      <a href="{{ url('app_login') }}" class="user-link">
         <span class="icon-user" style="background-image:url('{{ asset('images/icon-user.svg') }}')"></span>
-      </div>
+      </a>
     </div>
 
   </nav>
