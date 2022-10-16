@@ -3,23 +3,20 @@
 {% block title %}Login{% endblock %}
 
 {% block body %}
-<br>
-<br>
-<br>
-<br>
-  <h3>Formulario login</h3>
-  {{ form(login_form)}}
-    {{ correo }}
-  {{ pass }}
 
-
-    VARIABLE SESSION -> {{ dump(session) }}
+  {% set vars = {'var_session': session_started } %}
+  {% include 'menu/index.html.twig' with vars %}
+  <br>
+  <br>
+  <br>
+  <br>
   
-  {% if session %}
-    session iniciada correctamente
-    <a href="logout">Cerrar sesion</a>
+  {% if session_started %}
+    Sesión iniciada correctamente <a href="logout">Cerrar sesion</a>
   {% endif %}
-  {% if session == false %}
-    session cerrada
+  {% if session_started == false %}
+    <h3>Formulario login</h3>
+    {{ form(login_form)}}
   {% endif %}
+
 {% endblock %}

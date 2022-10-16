@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class HomepageController extends AbstractController
 {
@@ -25,7 +26,7 @@ class HomepageController extends AbstractController
   /**
    * @Route("/", name="app_homepage")
    */
-  public function index( Request $request, UserPasswordHasherInterface $passwordHasher ): Response
+  public function index( Request $request, Session $sess, UserPasswordHasherInterface $passwordHasher ): Response
   {
     //Formulario Registro
     $user = new Usuarios();
@@ -52,11 +53,14 @@ class HomepageController extends AbstractController
     //Datos homepage
     $products = $this->em->getRepository( Productos::class )->getAllProducts();
     $productsCategories = $this->em->getRepository( Productos::class )->getAllProductsCatsId();
+    $session_started = $this->em->getRepository( Usuarios::class )->checkSessionStart( $sess );
 
     return $this->render('homepage/index.html.twig', [
       'products_categories' => $productsCategories,
       'products' => $products,
       'registration_form' => $register_form->createView(),
+      'session_started' => $session_started,
+      'session' => $sess,
     ]);
   }
 }

@@ -3,5 +3,11 @@
 {% block title %}Hello ProductosPageController!{% endblock %}
 
 {% block body %}
-Pagina de producto
+  {% set vars = {'var_session': session_started } %}
+  {% include 'menu/index.html.twig' with vars %}
+  <br>
+  <br>
+  <br>
+  <br>
+  Pagina de producto
 {% endblock %}
