@@ -3,6 +3,10 @@
 {% block title %}Página de inicio!{% endblock %}
 
 {% block body %}
+
+  {% set vars = {'var_session': session_started, 'carrito': 'Variable carrito' } %}
+  {% include 'menu/index.html.twig' with vars %}
+
   <section class="section-hero">
     <div class="swiper swiper-hero">
       <!-- Additional required wrapper -->

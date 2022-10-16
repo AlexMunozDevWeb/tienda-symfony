@@ -71,7 +71,7 @@ class UsuariosRepository extends ServiceEntityRepository implements PasswordUpgr
     /**
      * Inicia session si existe un usuario.
      */
-    public function sessionStart( $resolveSession ){
+    public function sessionStart( $session, $resolveSession ){
 
       if( !empty( $resolveSession ) ){
 
@@ -79,13 +79,21 @@ class UsuariosRepository extends ServiceEntityRepository implements PasswordUpgr
           $session = new Session();
           $session->start();
         }
-
-        $_SESSION['correo'] = $resolveSession[0]["correo"];
-        $name = $_SESSION['correo']; 
-
-        return 'Session iniciada por ' . $name;
+        $session->set('correo', $resolveSession[0]["correo"]);
+        return;
       }else{
         return;
+      }
+    }
+
+    /**
+     * Comprueba si se ha iniciado sesión
+     */
+    public function checkSessionStart( $session ){
+      if ( $session->has('correo') ) {
+        return true;
+      }else{
+        return false;
       }
     }
 

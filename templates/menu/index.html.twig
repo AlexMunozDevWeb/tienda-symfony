@@ -15,21 +15,22 @@
         <li><a href="#" class="single-link" >Contact</a></li>
       </ul>
     </div>
-
     <div class="right-side-menu">
-      <div class="cart-link">
-        <div class="cart-icon-container">
-          <span class="icon-cart" style="background-image:url('{{ asset('images/icon-cart.svg') }}')"></span>
-          <span class="quantity">1</span>
-        </div>
-        <div class="cart-content">
-          <div class="title-cart">Cart item name</div>
-          <div class="separador"></div>
-          <div class="item-description">
-            Descripcion del producto
+      {% if session_started %}
+        <div class="cart-link">
+          <div class="cart-icon-container">
+            <span class="icon-cart" style="background-image:url('{{ asset('images/icon-cart.svg') }}')"></span>
+            <span class="quantity">1</span>
+          </div>
+          <div class="cart-content">
+            <div class="title-cart">Cart item name</div>
+            <div class="separador"></div>
+            <div class="item-description">
+              Descripcion del producto
+            </div>
           </div>
         </div>
-      </div>
+      {% endif %}
       <a href="{{ url('app_login') }}" class="user-link">
         <span class="icon-user" style="background-image:url('{{ asset('images/icon-user.svg') }}')"></span>
       </a>
