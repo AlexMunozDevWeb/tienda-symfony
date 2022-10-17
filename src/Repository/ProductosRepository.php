@@ -39,6 +39,34 @@ class ProductosRepository extends ServiceEntityRepository
         }
     }
 
+    public function getAllProductsCatsId(){
+      $conn = $this->getEntityManager()->getConnection();
+      $sql = 'SELECT cat.id as id, cat.nombre, IFNULL( products.cantidad, 0 ) as cantidad
+              FROM categorias cat
+              RIGHT JOIN(
+                  SELECT pro.id_cat_id as id, count( pro.id_cat_id ) as cantidad
+                  FROM productos pro 
+                  GROUP BY pro.id_cat_id
+              ) as products ON cat.id = products.id';
+      $stmt = $conn->prepare($sql);
+      $resultSet = $stmt->executeQuery();
+      return $resultSet->fetchAllAssociative();
+    }
+    public function getAllProducts(){
+      $conn = $this->getEntityManager()->getConnection();
+      $sql = 'SELECT * FROM productos';
+      $stmt = $conn->prepare($sql);
+      $resultSet = $stmt->executeQuery();
+      return $resultSet->fetchAllAssociative();
+    }
+    public function getProductStock( $id ){
+      $conn = $this->getEntityManager()->getConnection();
+      $sql = "SELECT stock FROM productos WHERE id = '$id'";
+      $stmt = $conn->prepare($sql);
+      $resultSet = $stmt->executeQuery();
+      return $resultSet->fetchAllAssociative();
+    }
+
 //    /**
 //     * @return Productos[] Returns an array of Productos objects
 //     */

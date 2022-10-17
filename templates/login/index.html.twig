@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+
+  {% set vars = {'var_session': session_started } %}
+  {% include 'menu/index.html.twig' with vars %}
+  <br>
+  <br>
+  <br>
+  <br>
+  
+  {% if session_started %}
+    Sesión iniciada correctamente <a href="logout">Cerrar sesion</a>
+  {% endif %}
+  {% if session_started == false %}
+    <h3>Formulario login</h3>
+    {{ form(login_form)}}
+  {% endif %}
+
+{% endblock %}

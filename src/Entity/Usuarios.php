@@ -62,9 +62,17 @@ class Usuarios implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $pedidos;
 
-    public function __construct()
+    public function __construct( $id = null, $pass = null, $correo = null, $direccion = null, 
+                                 $cp = null, $ciudad = null, $pais = null )
     {
-        $this->pedidos = new ArrayCollection();
+      $this->id = $id;
+      $this->password = $pass;
+      $this->correo = $correo;
+      $this->direccion = $direccion;
+      $this->CP = $cp;
+      $this->ciudad = $ciudad;
+      $this->pais = $pais;
+      $this->pedidos = new ArrayCollection();
     }
 
     public function getId(): ?int

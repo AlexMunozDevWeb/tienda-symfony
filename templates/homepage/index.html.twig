@@ -3,6 +3,10 @@
 {% block title %}Página de inicio!{% endblock %}
 
 {% block body %}
+
+  {% set vars = {'var_session': session_started, 'carrito': 'Variable carrito' } %}
+  {% include 'menu/index.html.twig' with vars %}
+
   <section class="section-hero">
     <div class="swiper swiper-hero">
       <!-- Additional required wrapper -->
@@ -15,7 +19,7 @@
       <!-- If we need navigation buttons -->
       <div class="arrow-container">
         <div class="swiper-button-prev"><img class="img-prev" src="{{ asset('images/icon-previous.svg') }}" alt="Prev imagen"></div>
-        <div class="swiper-button-next"><img class="img-next" src="{{ asset('images/icon-next.svg') }}" alt="Prev imagen"></div>>
+        <div class="swiper-button-next"><img class="img-next" src="{{ asset('images/icon-next.svg') }}" alt="Prev imagen"></div>
         <a class="anchor" data-content="go-to-content">
           <img class="img-go-down" src="{{ asset('images/go-down.svg') }}" alt="Ancla">
         </a>
@@ -25,6 +29,18 @@
     <div id="go-to-content"></div>    
   </section>
 
-  <section class="contenido-extra">
+  {% for pro_cat in products_categories %}
+  <section class="sn-container show-productos container-products-{{ pro_cat.cantidad }}">
+    <h3>{{ pro_cat.nombre }}</h3>
+        {% for product in products %}
+          {% if product.id_cat_id == pro_cat.id %}
+            <a href="/productos/{{ product.id }}">{{ product.nombre }}</a><br>
+          {% endif %}
+        {% endfor %}  
   </section>
+  {% endfor %}
+
+  <h3>Formulario de registro</h3>
+  {{ form(registration_form)}}
+
 {% endblock %}

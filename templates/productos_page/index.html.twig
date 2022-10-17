@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductosPageController!{% endblock %}
+
+{% block body %}
+  
+  {% set vars = {'var_session': session_started } %}
+  {% include 'menu/index.html.twig' with vars %}
+
+  <section class="sn-container product-page">
+    <div class="product-container">
+      
+      <div class="img-container">
+        <img class="main-single-img" src="{{ asset( imgs[0]['url'] ) }}">
+
+        <div class="swiper swiper-single-product">
+
+          <div class="swiper-wrapper wrapper-single-product">
+            {% for img_src in imgs %}
+            <div class="swiper-slide slide-single-product">
+              <img class="single-img" src="{{ asset( img_src['url'] ) }}">
+            </div>
+            {% endfor %}
+          </div>
+
+          {# <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div> #}
+
+        </div>
+        
+      </div>
+
+      <div class="description-container">
+        <h1 class="h1">{{ product.nombre }}</h1>
+        <span class="company-orange">Sneaker company</span>
+        <p class="description">{{ product.descripcion }}</p>
+        <p class="price">{{ product.precio }} €</p>
+  
+        <form action="{{ path('app_cart') }}" method="post">
+          <div class="amount">
+            <input id="minus" class="minus" type="button" name="minus" value="-">
+            <input id="quantity" class="quantity" type="number" name="quantity" value="0" min="0" max="{{ stock[0]['stock'] }}">
+            <input id="sum" class="sum" type="button" name="sum" value="+">
+            <input type="hidden" name="id_pro" value="{{ product.id }}">
+          </div>
+          <div class="send-product">
+            <input class="add-to-cart" type="submit" value="Añadir al carrito">
+          </div>
+        </form>
+        
+      </div>
+    
+    </div>
+  </section>
+{% endblock %}
