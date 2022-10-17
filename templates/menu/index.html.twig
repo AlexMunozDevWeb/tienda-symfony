@@ -17,7 +17,7 @@
     </div>
     <div class="right-side-menu">
       {% if session_started %}
-        <div class="cart-link">
+        <a href="{{ url('app_cart') }}" class="cart-link">
           <div class="cart-icon-container">
             <span class="icon-cart" style="background-image:url('{{ asset('images/icon-cart.svg') }}')"></span>
             <span class="quantity">1</span>
@@ -29,7 +29,7 @@
               Descripcion del producto
             </div>
           </div>
-        </div>
+        </a>
       {% endif %}
       <a href="{{ url('app_login') }}" class="user-link">
         <span class="icon-user" style="background-image:url('{{ asset('images/icon-user.svg') }}')"></span>
