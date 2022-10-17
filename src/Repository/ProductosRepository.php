@@ -59,6 +59,13 @@ class ProductosRepository extends ServiceEntityRepository
       $resultSet = $stmt->executeQuery();
       return $resultSet->fetchAllAssociative();
     }
+    public function getProductStock( $id ){
+      $conn = $this->getEntityManager()->getConnection();
+      $sql = "SELECT stock FROM productos WHERE id = '$id'";
+      $stmt = $conn->prepare($sql);
+      $resultSet = $stmt->executeQuery();
+      return $resultSet->fetchAllAssociative();
+    }
 
 //    /**
 //     * @return Productos[] Returns an array of Productos objects
