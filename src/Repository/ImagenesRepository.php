@@ -39,6 +39,14 @@ class ImagenesRepository extends ServiceEntityRepository
         }
     }
 
+    public function getImgsProducts( $proId ){
+        $conn = $this->getEntityManager()->getConnection();
+        $sql = "SELECT url FROM imagenes WHERE id_producto_id = '$proId'";
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery();
+        return $resultSet->fetchAllAssociative();
+    }
+
 //    /**
 //     * @return Imagenes[] Returns an array of Imagenes objects
 //     */
