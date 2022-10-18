@@ -4,6 +4,14 @@
   .login-register-container{
     border-top: 1px solid @dark-grayish-blue;
     padding-top: 10%;
+    .message-register{
+      display: flex;
+      justify-content: center;
+      p.msn{
+        max-width: 600px;
+        width: 70%;
+      }
+    }
     .login-container, .register-container{
       display: flex;
       flex-direction: column;
@@ -68,6 +76,11 @@
   @media ( max-width:768px ) {
     .login-register-container{
       padding-top: 5%;
+      .message-register{
+        p.msn{
+          width: 100%;
+        }
+      }
       .login-container, .register-container{
         form{
           width: 100%;

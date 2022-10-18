@@ -44,7 +44,14 @@ class LoginController extends AbstractController
       $this->em->persist( $user );
       $this->em->flush();
       
-      return $this->redirectToRoute( 'app_login' );
+      $login_form = $this->createForm( LoginType::class ); 
+
+      return $this->render('login/index.html.twig', [
+        'session_started' => false,
+        'register_done' => true,
+        'login_form' => $login_form->createView(),
+      ]);
+
     }
 
     //Formulario Login
@@ -54,17 +61,16 @@ class LoginController extends AbstractController
     $user_pass = $login_form->get( 'password' )->getData();
 
     $user_creden = $this->em->getRepository( Usuarios::class )->checkCredenciales( $user_correo, $user_pass );
-    $prueba =  $this->em->getRepository( Usuarios::class )->sessionStart( $sess, $user_creden );
+    $this->em->getRepository( Usuarios::class )->sessionStart( $sess, $user_creden );
     $session_started = $this->em->getRepository( Usuarios::class )->checkSessionStart( $sess );
 
-    // if( $session_started ){
-    //   return $this->redirectToRoute('app_homepage');
-    // }
+    if( $session_started ){
+      return $this->redirectToRoute('app_homepage');
+    }
 
     return $this->render('login/index.html.twig', [
-      'controller_name' => 'LoginController',
+      'register_done' => false,
       'login_form' => $login_form->createView(),
-      'correo' => $user_correo,
       'registration_form' => $register_form->createView(),
       'session_started' => $session_started,
     ]);
