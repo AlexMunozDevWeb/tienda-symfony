@@ -443,3 +443,28 @@ header.menu-section .menu-mobile {
   background-color: gray;
   height: 3000px;
 }
+section.show-productos {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+section.show-productos h2.h2 {
+  border-bottom: 1px solid hsl(220, 14%, 75%);
+}
+section.show-productos .swiper-home-product {
+  height: fit-content;
+}
+section.show-productos .swiper-home-product .wrapper-home-products .slide-home-products a.link-product {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  display: block;
+}
+section.show-productos .swiper-home-product .wrapper-home-products .slide-home-products a.link-product .single-img {
+  box-sizing: border-box;
+  border: 2px solid hsl(26, 100%, 55%);
+  border-radius: 10px;
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+}
