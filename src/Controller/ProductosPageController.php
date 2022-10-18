@@ -31,12 +31,15 @@ class ProductosPageController extends AbstractController
     $stock = $this->em->getRepository( Productos::class )->getProductStock( $id );
     $img_product = $this->em->getRepository( Imagenes::class )->getImgsProducts( $id );
 
+    $session_started = $this->em->getRepository( Usuarios::class )->checkSessionStart( $sess );
+
     return $this->render('productos_page/index.html.twig', [
       'session_started' => $session_started,
       'id'              => $id,
       'product'         => $product,
       'imgs'            => $img_product,
-      'stock'           => $stock
+      'stock'           => $stock,
+      'session_started' => $session_started,
     ]);
   }
 }

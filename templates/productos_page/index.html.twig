@@ -35,19 +35,23 @@
         <span class="company-orange">Sneaker company</span>
         <p class="description">{{ product.descripcion }}</p>
         <p class="price">{{ product.precio }} €</p>
-  
-        <form action="{{ path('app_cart') }}" method="post">
-          <div class="amount">
-            <input id="minus" class="minus" type="button" name="minus" value="-">
-            <input id="quantity" class="quantity" type="number" name="quantity" value="0" min="0" max="{{ stock[0]['stock'] }}">
-            <input id="sum" class="sum" type="button" name="sum" value="+">
-            <input type="hidden" name="id_pro" value="{{ product.id }}">
-          </div>
-          <div class="send-product">
-            <input class="add-to-cart" type="submit" value="Añadir al carrito">
-          </div>
-        </form>
-        
+
+        {% if session_started == true %}
+          <form action="{{ path('app_cart') }}" method="post">
+            <div class="amount">
+              <input id="minus" class="minus" type="button" name="minus" value="-">
+              <input id="quantity" class="quantity" type="number" name="quantity" value="0" min="0" max="{{ stock[0]['stock'] }}">
+              <input id="sum" class="sum" type="button" name="sum" value="+">
+              <input type="hidden" name="id_pro" value="{{ product.id }}">
+            </div>
+            <div class="send-product">
+              <input class="add-to-cart" type="submit" value="Añadir al carrito">
+            </div>
+          </form>
+        {% endif %}
+        {% if session_started == false %}
+          <a class="login-to-buy" href="{{ url('app_login') }}">Inicie sesion</a> <span class="out-of-link"> para comprar.</span>
+        {% endif %}
       </div>
     
     </div>
