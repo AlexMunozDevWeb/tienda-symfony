@@ -20,11 +20,13 @@
         <a href="{{ url('app_cart') }}" class="cart-link">
           <div class="cart-icon-container">
             <span class="icon-cart" style="background-image:url('{{ asset('images/icon-cart.svg') }}')"></span>
-            <span class="quantity">1</span>
+            {% if cart_empty %}
+              <span class="quantity">{{ quantity_products }}</span>
+            {% endif %}
           </div>
         </a>
       {% endif %}
-
+  
       {% if session_started %}
         <div class="user-link-photo">
           <img class="icon-user-photo" src="{{ asset('images/image-avatar.png') }}">

@@ -4,7 +4,7 @@
 
 {% block body %}
 
-  {% set vars = {'var_session': session_started, 'carrito': 'Variable carrito' } %}
+  {% set vars = {'var_session': session_started, 'carrito': cart_empty, 'num_products': quantity_products } %}
   {% include 'menu/index.html.twig' with vars %}
 
   <section class="section-hero">

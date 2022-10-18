@@ -66,6 +66,25 @@ class ProductosRepository extends ServiceEntityRepository
       $resultSet = $stmt->executeQuery();
       return $resultSet->fetchAllAssociative();
     }
+    
+    /**
+     * Get cart if exists
+     */
+    public function getCart( $session ){
+      $cart_detail = '';
+      if( $session->has( 'carrito' ) ){
+        $cart_session = $session->get( 'carrito');
+        $keys_cart = array_keys( $cart_session );
+        $cart_detail = array(['id_pro' => 0,'cantidad' => '']);
+    
+        for ($i=0; $i < count($cart_session); $i++) { 
+          $cart_detail[$i]['id_pro'] = $keys_cart[$i];
+          $cart_detail[$i]['cantidad'] = $cart_session[ $keys_cart[$i] ]['unidades'];
+          $cart_detail[$i]['usuario'] = $session->get('correo');
+        }
+      }
+      return $cart_detail;
+    }
 
 //    /**
 //     * @return Productos[] Returns an array of Productos objects

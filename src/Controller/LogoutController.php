@@ -12,6 +12,9 @@ class LogoutController extends AbstractController
     #[Route('/logout', name: 'app_logout')]
     public function index( Session $sess ): Response
     {
+      if( $sess->has('carrito') ){
+        $sess->remove('carrito');
+      }
       $sess->remove('correo');
       return $this->redirectToRoute('app_homepage');
     }
