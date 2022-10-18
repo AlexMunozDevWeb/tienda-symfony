@@ -4,7 +4,7 @@
 
 {% block body %}
   
-  {% set vars = {'var_session': session_started } %}
+  {% set vars = {'var_session': session_started, 'carrito': cart_empty } %}
   {% include 'menu/index.html.twig' with vars %}
 
   <section class="sn-container product-page">

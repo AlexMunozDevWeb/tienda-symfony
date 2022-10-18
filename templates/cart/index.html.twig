@@ -3,7 +3,14 @@
 {% block title %}Hello CartController!{% endblock %}
 
 {% block body %}
-  {{ dump(session) }}
-  {# {{ dump(cantidad) }} #}
-  {# {{ dump(id_pro) }} #}
+
+  {% set vars = {'var_session': session_started, 'carrito': cart_empty, 'num_products': quantity_products } %}
+  {% include 'menu/index.html.twig' with vars %}
+
+  <section class="sn-container cart-section-container">
+    <div class="cart-wrapper">
+    {{ dump(details_cart) }}
+    </div>
+  </section>
+
 {% endblock %}
