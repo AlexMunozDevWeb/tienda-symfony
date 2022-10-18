@@ -6,17 +6,37 @@
 
   {% set vars = {'var_session': session_started } %}
   {% include 'menu/index.html.twig' with vars %}
-  <br>
-  <br>
-  <br>
-  <br>
   
-  {% if session_started %}
-    Sesión iniciada correctamente <a href="logout">Cerrar sesion</a>
-  {% endif %}
-  {% if session_started == false %}
-    <h3>Formulario login</h3>
-    {{ form(login_form)}}
-  {% endif %}
+  <section class="sn-container section-login">
+    <div class="login-register-container">
+
+      {% if session_started %}
+        Sesión iniciada correctamente <a href="logout">Cerrar sesion</a>
+      {% endif %}
+
+      {% if register_done %}
+      <div class="message-register">
+        <p class="msn">Registro realizado con éxito, ya puede iniciar sesión.</p>
+      </div>
+      {% endif %}
+
+      {% if session_started == false %}
+      <div class="login-container">
+        <h2 class="h2-forms">Formulario login</h2>
+        {{ form(login_form)}}
+      </div>
+
+        {% if register_done == false %}
+          <div class="register-container">
+            <h2 class="h2-forms">Formulario de registro</h2>
+            {{ form(registration_form)}}
+          </div>
+        {% endif %}
+      {% endif %}
+
+    </div>
+  </section>
+  
+
 
 {% endblock %}
