@@ -3,6 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Pedidos;
+use App\Entity\Productos;
+use App\Entity\ProductosPedidos;
+use App\Entity\Usuarios;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -37,6 +41,50 @@ class PedidosRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function checkout( $cart_detail, $em, $session){
+
+      if ( is_null( $cart_detail ) || count( $cart_detail ) == 0 ) {
+        return $this->redirectToRoute('cart_checkout');
+      }else {
+        // dd($cart_detail);
+        for ($i=0; $i < count( $cart_detail ) ; $i++) { 
+          //Pedidos
+          $pedido = new Pedidos();
+          $pedido->setFecha( new DateTime() );
+          $pedido->setEnviado( 0 );
+          $pedido->setIdUsuario( $em->getRepository( Usuarios::class )->find( $cart_detail[$i]['usuario_id'] ) );
+          $em->persist( $pedido );
+          
+          //ProductosPedidos
+          $productos_pedidos = new ProductosPedidos();
+          $productos_pedidos->setCodProducto( $em->getRepository( Productos::class )->find( $cart_detail[$i]['id_pro'] ) );
+          $productos_pedidos->setCodPedido( $pedido );
+          $productos_pedidos->setUnidades( $cart_detail[$i]['cantidad'] );
+
+          //Actualizar stock
+          $cantidad = $cart_detail[$i]['cantidad'];
+          $codigo = $cart_detail[$i]['id_pro'];
+          $query = $em->createQuery(
+            "UPDATE App\Entity\Productos p
+             SET p.stock = p.stock - $cantidad 
+             WHERE p.id = $codigo"
+          );
+          $result = $query->getResult();
+          $em->persist( $productos_pedidos );
+
+          try {
+            $em->flush();
+            $session->remove('carrito');
+            $session->set('compra_realizada', true);
+          } catch (\Throwable $th) {
+            return 'error';
+          }
+        }
+
+      }
+
     }
 
 //    /**

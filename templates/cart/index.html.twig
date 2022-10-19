@@ -6,11 +6,49 @@
 
   {% set vars = {'var_session': session_started, 'carrito': cart_empty, 'num_products': quantity_products } %}
   {% include 'menu/index.html.twig' with vars %}
-
+  
+  {% if checkout_done %}
+  <div class="pop-up-checkout">
+    <div class="box-pop-up">
+      <p>Compra realizada correctamente</p>
+      <a class="standard-link" href="{{ path( 'cart_remove_data' ) }}">Volver</a>
+    </div>
+  </div>
+  {% endif %}
+  
   <section class="sn-container cart-section-container">
     <div class="cart-wrapper">
-    {{ dump(details_cart) }}
+      <h2 class="h2 title-cart">Carrito</h2>
+      {% for product in details_cart %}
+      {% set total = product['precio'] * product['cantidad'] %}
+      <div class="single-line-cart">
+        <div class="name-img">
+          <img class="img-product" src="{{ asset( product['url_img'] ) }}">
+          <p class="name-product">{{ product['product_name'] }}</p>
+        </div>
+        <div class="price-icon">
+          <p class="price">{{ product['precio'] }} x {{ product['cantidad'] }} = {{ total }} €</p>
+          <a class="link-delete" href="{{ product['slug'] ~ product['id_pro'] }}">
+            <img class="icon-delete" src="{{ asset( 'images/icon-delete.svg' ) }}">
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+
+      {% if details_cart is not empty %}
+      <div class="form-checkout">
+        <form action="{{ path('cart_checkout') }}" method="POST">
+          <input class="btn-checkout" type="submit" value="Realizar compra">
+        </form>
+      </div>
+      {% endif %}
+
+      {% if details_cart is empty %}
+        <p class="empty-cart">El carrito esta vacío.</p>
+      {% endif %}
     </div>
+      {# {{ dump(details_cart) }}
+      {{ dump(session) }} #}
   </section>
 
 {% endblock %}
