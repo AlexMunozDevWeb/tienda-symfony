@@ -5,7 +5,7 @@
 const swiper = new Swiper('.swiper.swiper-hero', {
   slidesPerView: 'auto',
   spaceBetween: 10,
-  // loop:true,
+  loop:true,
   autoplay: {
     delay: 3000,
   },
@@ -22,7 +22,7 @@ const swiper = new Swiper('.swiper.swiper-hero', {
 const swiper_home_products = new Swiper('.swiper.swiper-home-product', {
   slidesPerView: 4,
   spaceBetween: 25,
-  loop:true,
+  // loop:true,
   autoplay: {
     delay: 3000,
   },
