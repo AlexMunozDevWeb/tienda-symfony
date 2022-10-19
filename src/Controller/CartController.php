@@ -8,7 +8,10 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+
+use function PHPUnit\Framework\isNull;
 
 class CartController extends AbstractController
 {
@@ -43,8 +46,10 @@ class CartController extends AbstractController
     
     $session_started = $this->em->getRepository( Usuarios::class )->checkSessionStart( $session );
     
-    $cart_detail = $this->em->getRepository( Productos::class )->getCart( $session );
-
+    if ($session->has('carrito')) {
+      $cart_detail = $this->em->getRepository( Productos::class )->getCart( $session );
+    }
+    
     return $this->render('cart/index.html.twig', [
         'session'           => $session,
         'session_started'   => $session_started,
@@ -53,4 +58,19 @@ class CartController extends AbstractController
         'details_cart'      => isset($cart_detail) ? $cart_detail : '',
     ]);
   }
+
+  #[Route('/cart/{id}', name: 'app_cart_remove')]
+  public function delete_row( SessionInterface $session, $id ): Response
+  {
+    $cart = $session->get('carrito');
+    unset($cart[$id]);
+    if( count($cart) == 0 ){
+      $session->remove('carrito');
+    }else{
+      $cart = $session->set('carrito', $cart);
+    }
+    return $this->redirectToRoute('app_cart');
+  }
+
+
 }
