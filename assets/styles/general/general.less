@@ -15,6 +15,10 @@
   font-family: 'Roboto Slab', serif;
 }
 
+body{
+  position: relative;
+}
+
 .h{
   &1{
     font-size: 44px;
@@ -87,6 +91,26 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+//STANDAR BUTTON
+.standard-link{
+  background-color: @orange;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: unset;
+  color: hsl(0, 0%, 100%);
+  cursor: pointer;
+  font-weight: 600;
+  height: 50px;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover{
+    opacity: .7;
+  }
 }
 
 //MARGIN AND PADDING

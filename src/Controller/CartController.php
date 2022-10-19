@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Pedidos;
 use App\Entity\Productos;
 use App\Entity\Usuarios;
 use Doctrine\ORM\EntityManagerInterface;
@@ -55,7 +56,8 @@ class CartController extends AbstractController
         'session_started'   => $session_started,
         'cart_empty'        => $session->has('carrito'),
         'quantity_products' => $session->has( 'carrito' ) ? count($cart_detail) : '',
-        'details_cart'      => isset($cart_detail) ? $cart_detail : '',
+        'details_cart'      => isset( $cart_detail ) ? $cart_detail : '',
+        'checkout_done'     => $session->has('compra_realizada') ? true : false,
     ]);
   }
 
@@ -72,5 +74,21 @@ class CartController extends AbstractController
     return $this->redirectToRoute('app_cart');
   }
 
+  #[Route('/cart/checkout', name: 'cart_checkout')]
+  public function checkout( SessionInterface $session ): Response
+  {
+    $cart_detail = $this->em->getRepository( Productos::class )->getCart( $session );
+    $this->em->getRepository( Pedidos::class )->checkout( $cart_detail, $this->em, $session );
+    
+    return $this->redirectToRoute('app_cart');
+  }
+  
+  #[Route('/cart/remove', name: 'cart_remove_data')]
+  public function remove_data( SessionInterface $session ): Response
+  {
+    $session->remove( 'carrito' );
+    $session->remove( 'compra_realizada' );
+    return $this->redirectToRoute('app_cart');
+  }
 
 }

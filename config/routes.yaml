@@ -11,3 +11,8 @@ app_cart_remove:
    path: /cart/{id}
    controller: App\Controller\CartController::delete_row
    methods: GET
+
+cart_checkout:
+   path: /cart/checkout
+   controller: App\Controller\CartController::checkout
+   methods: POST
