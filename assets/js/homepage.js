@@ -3,17 +3,20 @@
  * Swiper hero
  */
 const swiper = new Swiper('.swiper.swiper-hero', {
-  slidesPerView: 'auto',
-  spaceBetween: 10,
-  loop:true,
+  
+  slidesPerView: 1,
+  spaceBetween: 0,
+  speed: 800,
+  effect: 'fade',
+  fadeEffect: {
+    crossFade: true
+  },
+  allowTouchMove: false,
   autoplay: {
-    delay: 3000,
+    delay: 2500,
+    disableOnInteraction: false,
   },
-  // Navigation arrows
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
+
 });
 
 /**
