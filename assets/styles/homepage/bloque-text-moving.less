@@ -1,0 +1,27 @@
+.section-text-button{
+  position: relative;
+  padding: 5% 0;
+  .line-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    .link-text{
+      color: @dark-grayish-blue;
+      font-family: 'Roboto Slab', serif;
+      font-weight: 500;
+      font-size: 20px;
+      .line{
+        white-space: nowrap;
+        animation: lineInfiniteAnim 60s infinite linear;
+      }
+    }
+    &.no-animation-text{
+      overflow: unset;
+      .line{
+        white-space: unset;
+        animation: none;
+      }
+    }
+  }
+}
