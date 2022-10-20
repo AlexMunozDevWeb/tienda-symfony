@@ -573,6 +573,36 @@ section.show-productos .swiper-home-product .wrapper-home-products .slide-home-p
   white-space: unset;
   animation: none;
 }
+#map {
+  height: 180px;
+}
+.section-parallax {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  position: relative;
+  margin: 5% 0;
+}
+.section-parallax p.promocion {
+  color: hsl(0, 0%, 100%);
+  font-size: 30px;
+  text-align: center;
+  z-index: 10;
+}
+.section-parallax .overlay-parallax {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
 .section-login {
   padding-top: 80px;
 }

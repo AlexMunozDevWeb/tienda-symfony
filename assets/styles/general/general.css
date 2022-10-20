@@ -16,6 +16,14 @@ body {
   font-size: 25px;
   font-weight: 700;
 }
+.h4 {
+  color: hsl(26, 100%, 55%);
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 31px;
+  border-bottom: 1px solid hsl(220, 14%, 75%);
+}
 span {
   font-family: 'Roboto Slab', serif;
 }
@@ -24,7 +32,7 @@ span.company-orange {
   font-size: 20px;
   font-weight: 600;
 }
-p.description {
+.description {
   font-size: 15px;
   color: hsl(219, 9%, 45%);
   font-weight: 400;
