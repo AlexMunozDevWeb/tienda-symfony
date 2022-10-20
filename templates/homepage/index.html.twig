@@ -11,22 +11,87 @@
     <div class="swiper swiper-hero">
       <!-- Additional required wrapper -->
       <div class="swiper-wrapper wrapper-hero">
-        <div class="swiper-slide slide-hero"><img class="slider-img" src="{{ asset( 'images/products/image-product-1.jpg' ) }}" alt="Imagen1"></div>
-        <div class="swiper-slide slide-hero"><img class="slider-img" src="{{ asset( 'images/products/image-product-2.jpg' ) }}" alt="Imagen2"></div>
-        <div class="swiper-slide slide-hero"><img class="slider-img" src="{{ asset( 'images/products/image-product-3.jpg' ) }}" alt="Imagen3"></div>
-        <div class="swiper-slide slide-hero"><img class="slider-img" src="{{ asset( 'images/products/image-product-4.jpg' ) }}" alt="Imagen4"></div>
+        <div class="swiper-slide slide-hero">
+          <img class="slider-img" src="{{ asset( 'images/hero/hero-basket.jpg' ) }}" alt="Imagen1">
+          <div class="overlay"></div>
+        </div>
+        <div class="swiper-slide slide-hero">
+          <img class="slider-img" src="{{ asset( 'images/hero/hero-nike.jpg' ) }}" alt="Imagen2">
+          <div class="overlay"></div>
+        </div>
+        <div class="swiper-slide slide-hero">
+          <img class="slider-img" src="{{ asset( 'images/hero/hero-shoes.jpg' ) }}" alt="Imagen3">
+          <div class="overlay"></div>
+        </div>
+        <div class="swiper-slide slide-hero">
+          <img class="slider-img" src="{{ asset( 'images/hero/hero-nike2.jpg' ) }}" alt="Imagen4">
+          <div class="overlay"></div>
+        </div>
+        <div class="swiper-slide slide-hero">
+          <img class="slider-img" src="{{ asset( 'images/hero/hero-shoes2.jpg' ) }}" alt="Imagen4">
+          <div class="overlay"></div>
+        </div>
       </div>
       <!-- If we need navigation buttons -->
       <div class="arrow-container">
-        <div class="swiper-button-prev"><img class="img-prev" src="{{ asset('images/icon-previous.svg') }}" alt="Prev imagen"></div>
-        <div class="swiper-button-next"><img class="img-next" src="{{ asset('images/icon-next.svg') }}" alt="Prev imagen"></div>
+        {# <div class="swiper-button-prev swiper-next-hero"><img class="img-prev" src="{{ asset('images/icon-previous.svg') }}" alt="Prev imagen"></div> #}
+        {# <div class="swiper-button-next swiper-prev-hero"><img class="img-next" src="{{ asset('images/icon-next.svg') }}" alt="Prev imagen"></div> #}
         <a class="anchor" data-content="go-to-content">
-          <img class="img-go-down" src="{{ asset('images/go-down.svg') }}" alt="Ancla">
+          <img class="img-go-down" src="{{ asset('images/arrow-down-solid.svg') }}" alt="Ancla">
         </a>
       </div>
 
     </div>
     <div id="go-to-content"></div>    
+  </section>
+
+  <section class="sn-container pre-order">
+    <div class="order-container">
+      <h2 class="h2 f-orange b-g-blue">Mikakus sneakers</h2>
+      <p class="description">Las New Boom Génesis son una reinterpretación de nuestras emblemáticas zapatillas multicolor: las Boom. Pensadas por y para personas con gran personalidad, se inspiran en las zapatillas de estilo chunky con especial énfasis en el máximo confort.</p>
+      <a href="#" class="standard-link link-reserva">Reserva</a>
+    </div>
+    <div class="img-container" style="background-image: url( {{ asset( 'images/new/new-product-1.jpg' ) }} );"></div>
+  </section>
+
+  <section class="sn-container pre-order inverse">
+    <div class="order-container">
+      <h2 class="h2 f-orange b-g-blue">Giannis immortality2</h2>
+      <p class="description">Pensada para personas con gran personalidad. Con una suela oversized de la casa Vibram de 3,5cm y materiales como el SEAQUAL YARN son un claro ejemplo de la moda sostenible del futuro. Además incorpora una plantilla 100% reciclada. El sistema de cordones está inspirado en las zapatillas de trail running modernas para otorgarle un aire más deportivo.</p>
+      <a href="#" class="standard-link link-reserva">Reserva</a>
+    </div>
+    <div class="img-container" style="background-image: url( {{ asset( 'images/new/new-product-2.jpg' ) }} );"></div>
+  </section>
+
+  <section class="sn-container map-section">
+    <div id="map"></div>
+    <div class="info-contact">
+      <h3 class="h4">Visítanos</h3>
+      <p class="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur itaque, inventore veniam praesentium voluptates maiores? Voluptas doloremque corrupti deserunt quidem minima perspiciatis cum mollitia quae? Debitis accusamus earum exercitationem dolore.</p>
+      <ul>
+        <li class="description">Ipsum dolor sit amet consectetur adipisicing elit</li>
+        <li class="description">Aspernatur itaque</li>
+        <li class="description">Voluptas doloremque corrupti</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sn-container section-parallax" style="background-image: url( {{ asset( 'images/soccer-parallax.jpg' ) }} );">
+    <p class="promocion">
+      Promoción 15% mes de Octubre
+    </p>
+    <div class="overlay-parallax"></div>
+  </section>
+
+  <section  class="section-text-button">
+    <div class="line-wrapper">
+      <a class="link-text" href="#" style="cursor: url('{{ asset('/images/primary-button.png') }}'), pointer;">
+        <p class="hmy-title h-h1-mod dark-blue line">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat autem illo iure impedit, possimus libero dolores quos quaerat ducimus voluptatem esse, doloribus eaque consequatur fuga. Nostrum, fugit. Recusandae, neque reprehenderit.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat autem illo iure impedit, possimus libero dolores quos quaerat ducimus voluptatem esse, doloribus eaque consequatur fuga. Nostrum, fugit. Recusandae, neque reprehenderit.
+        </p>
+      </a>
+    </div>
   </section>
 
   {% for pro_cat in products_categories %}

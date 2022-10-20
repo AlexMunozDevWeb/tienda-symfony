@@ -16,6 +16,14 @@ body {
   font-size: 25px;
   font-weight: 700;
 }
+.h4 {
+  color: hsl(26, 100%, 55%);
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 31px;
+  border-bottom: 1px solid hsl(220, 14%, 75%);
+}
 span {
   font-family: 'Roboto Slab', serif;
 }
@@ -24,11 +32,14 @@ span.company-orange {
   font-size: 20px;
   font-weight: 600;
 }
-p.description {
+.description {
   font-size: 15px;
   color: hsl(219, 9%, 45%);
   font-weight: 400;
   line-height: 24px;
+}
+.description.bold {
+  font-weight: 600;
 }
 p.price {
   color: hsl(220, 13%, 13%);
@@ -40,6 +51,30 @@ p.price {
 }
 .para-medium {
   font-size: 16px;
+}
+.f-orange {
+  color: hsl(26, 100%, 55%);
+}
+.f-pale-orange {
+  color: hsl(25, 100%, 94%);
+}
+.f-dark-blue {
+  color: hsl(220, 13%, 13%);
+}
+.f-dark-grayish-blue {
+  color: hsl(219, 9%, 45%);
+}
+.f-grayish-blue {
+  color: hsl(220, 14%, 75%);
+}
+.f-white {
+  color: hsl(0, 0%, 100%);
+}
+.f-black {
+  color: hsl(0, 0%, 0%);
+}
+.b-g-blue {
+  border-bottom: 1px solid hsl(220, 14%, 75%);
 }
 a {
   color: hsl(0, 0%, 0%);
