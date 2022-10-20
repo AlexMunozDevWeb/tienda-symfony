@@ -45,16 +45,23 @@
     <div id="go-to-content"></div>    
   </section>
 
+  <section class="sn-container section-parallax" style="background-image: url( {{ asset( 'images/soccer-parallax.jpg' ) }} );">
+    <p class="promocion">
+      Promoción 15% mes de Octubre
+    </p>
+    <div class="overlay-parallax"></div>
+  </section>
+
   <section  class="section-text-button">
-  <div class="line-wrapper">
-    <a class="link-text" href="#" style="cursor: url('{{ asset('/images/primary-button.png') }}'), pointer;">
-      <p class="hmy-title h-h1-mod dark-blue line">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat autem illo iure impedit, possimus libero dolores quos quaerat ducimus voluptatem esse, doloribus eaque consequatur fuga. Nostrum, fugit. Recusandae, neque reprehenderit.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat autem illo iure impedit, possimus libero dolores quos quaerat ducimus voluptatem esse, doloribus eaque consequatur fuga. Nostrum, fugit. Recusandae, neque reprehenderit.
-      </p>
-    </a>
-  </div>
-</section>
+    <div class="line-wrapper">
+      <a class="link-text" href="#" style="cursor: url('{{ asset('/images/primary-button.png') }}'), pointer;">
+        <p class="hmy-title h-h1-mod dark-blue line">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat autem illo iure impedit, possimus libero dolores quos quaerat ducimus voluptatem esse, doloribus eaque consequatur fuga. Nostrum, fugit. Recusandae, neque reprehenderit.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat autem illo iure impedit, possimus libero dolores quos quaerat ducimus voluptatem esse, doloribus eaque consequatur fuga. Nostrum, fugit. Recusandae, neque reprehenderit.
+        </p>
+      </a>
+    </div>
+  </section>
 
   {% for pro_cat in products_categories %}
   <section class="sn-container show-productos container-products-{{ pro_cat.cantidad }}">

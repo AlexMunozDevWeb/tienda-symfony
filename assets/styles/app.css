@@ -119,6 +119,14 @@ input[type=number] {
     transform: translateY(0px);
   }
 }
+@keyframes lineInfiniteAnim {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-40%);
+  }
+}
 section.product-page {
   padding-top: 80px;
 }
@@ -540,6 +548,7 @@ section.show-productos .swiper-home-product .wrapper-home-products .slide-home-p
 }
 .section-text-button {
   position: relative;
+  padding: 5% 0;
 }
 .section-text-button .line-wrapper {
   display: flex;
@@ -548,11 +557,14 @@ section.show-productos .swiper-home-product .wrapper-home-products .slide-home-p
   overflow: hidden;
 }
 .section-text-button .line-wrapper .link-text {
-  cursor: url('/wp-content/themes/hmy-theme/assets/PrimaryButton.svg'), pointer;
+  color: hsl(219, 9%, 45%);
+  font-family: 'Roboto Slab', serif;
+  font-weight: 500;
+  font-size: 20px;
 }
 .section-text-button .line-wrapper .link-text .line {
   white-space: nowrap;
-  animation: lineInfiniteAnim 80s infinite linear;
+  animation: lineInfiniteAnim 60s infinite linear;
 }
 .section-text-button .line-wrapper.no-animation-text {
   overflow: unset;
