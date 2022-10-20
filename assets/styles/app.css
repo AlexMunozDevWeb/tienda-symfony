@@ -16,6 +16,14 @@ body {
   font-size: 25px;
   font-weight: 700;
 }
+.h4 {
+  color: hsl(26, 100%, 55%);
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 31px;
+  border-bottom: 1px solid hsl(220, 14%, 75%);
+}
 span {
   font-family: 'Roboto Slab', serif;
 }
@@ -24,7 +32,7 @@ span.company-orange {
   font-size: 20px;
   font-weight: 600;
 }
-p.description {
+.description {
   font-size: 15px;
   color: hsl(219, 9%, 45%);
   font-weight: 400;
@@ -573,8 +581,49 @@ section.show-productos .swiper-home-product .wrapper-home-products .slide-home-p
   white-space: unset;
   animation: none;
 }
-#map {
-  height: 180px;
+section.map-section {
+  height: fit-content;
+  margin-top: 5%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 30px;
+}
+section.map-section #map {
+  border-bottom-left-radius: 150px;
+  border-top-right-radius: 150px;
+  height: 400px;
+}
+section.map-section #map .leaflet-control a svg {
+  display: none;
+}
+section.map-section #map .pin-text {
+  font-size: 13px;
+  font-weight: 500;
+}
+section.map-section .info-contact ul li {
+  padding-left: 30px;
+  position: relative;
+}
+section.map-section .info-contact ul li::after {
+  content: '';
+  position: absolute;
+  background-color: hsl(26, 100%, 55%);
+  height: 2px;
+  width: 14px;
+  top: 11px;
+  left: 5px;
+}
+@media (max-width: 768px) {
+  section.map-section {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  section.map-section #map {
+    margin-top: 5%;
+    order: 2;
+  }
+  section.map-section .info-contact {
+    order: 1;
+  }
 }
 .section-parallax {
   background-attachment: fixed;
