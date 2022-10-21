@@ -608,50 +608,6 @@ section.show-productos .swiper-home-product .wrapper-home-products .slide-home-p
   white-space: unset;
   animation: none;
 }
-section.map-section {
-  height: fit-content;
-  margin-top: 5%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 30px;
-}
-section.map-section #map {
-  border-bottom-left-radius: 150px;
-  border-top-right-radius: 150px;
-  height: 400px;
-}
-section.map-section #map .leaflet-control a svg {
-  display: none;
-}
-section.map-section #map .pin-text {
-  font-size: 13px;
-  font-weight: 500;
-}
-section.map-section .info-contact ul li {
-  padding-left: 30px;
-  position: relative;
-}
-section.map-section .info-contact ul li::after {
-  content: '';
-  position: absolute;
-  background-color: hsl(26, 100%, 55%);
-  height: 2px;
-  width: 14px;
-  top: 11px;
-  left: 5px;
-}
-@media (max-width: 768px) {
-  section.map-section {
-    grid-template-columns: repeat(1, 1fr);
-  }
-  section.map-section #map {
-    margin-top: 5%;
-    order: 2;
-  }
-  section.map-section .info-contact {
-    order: 1;
-  }
-}
 section.pre-order {
   margin-top: 5%;
   height: fit-content;
@@ -694,6 +650,52 @@ section.pre-order.inverse .img-container {
     order: 2;
   }
 }
+section.info-delivery-component {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+  margin-top: 5%;
+}
+section.info-delivery-component .card-1,
+section.info-delivery-component .card-2,
+section.info-delivery-component .card-3,
+section.info-delivery-component .card-4 {
+  display: flex;
+  flex-direction: column;
+}
+section.info-delivery-component .card-1 img,
+section.info-delivery-component .card-2 img,
+section.info-delivery-component .card-3 img,
+section.info-delivery-component .card-4 img {
+  filter: invert(68%) sepia(76%) saturate(4149%) hue-rotate(347deg) brightness(102%) contrast(102%);
+  height: 60px;
+  width: 60px;
+}
+@media screen and (min-width: 530px) and (max-width: 768px) {
+  section.info-delivery-component {
+    grid-template-columns: repeat(2, 2fr);
+  }
+  section.info-delivery-component .card-1,
+  section.info-delivery-component .card-2 {
+    margin-top: 5%;
+  }
+}
+@media (max-width: 529px) {
+  section.info-delivery-component {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  section.info-delivery-component .card-1,
+  section.info-delivery-component .card-2,
+  section.info-delivery-component .card-3,
+  section.info-delivery-component .card-4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  section.info-delivery-component .card-1 {
+    margin-top: 5%;
+  }
+}
 .section-parallax {
   background-attachment: fixed;
   background-position: center;
@@ -720,6 +722,60 @@ section.pre-order.inverse .img-container {
   width: 100%;
   top: 0;
   left: 0;
+}
+section.contact-form-section {
+  padding-top: 80px;
+}
+section.contact-form-section .section-content {
+  border-top: 1px solid hsl(220, 14%, 75%);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 30px;
+  padding-top: 5%;
+}
+section.contact-form-section .section-content .map-container {
+  height: fit-content;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 30px;
+}
+section.contact-form-section .section-content .map-container #map {
+  border-bottom-left-radius: 150px;
+  border-top-right-radius: 150px;
+  height: 400px;
+  z-index: 5;
+}
+section.contact-form-section .section-content .map-container #map .leaflet-control a svg {
+  display: none;
+}
+section.contact-form-section .section-content .map-container #map .pin-text {
+  font-size: 13px;
+  font-weight: 500;
+}
+section.contact-form-section .section-content .map-container .info-contact ul li {
+  padding-left: 30px;
+  position: relative;
+}
+section.contact-form-section .section-content .map-container .info-contact ul li::after {
+  content: '';
+  position: absolute;
+  background-color: hsl(26, 100%, 55%);
+  height: 2px;
+  width: 14px;
+  top: 11px;
+  left: 5px;
+}
+@media (max-width: 768px) {
+  section.contact-form-section .section-content .map-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  section.contact-form-section .section-content .map-container #map {
+    margin-top: 5%;
+    order: 2;
+  }
+  section.contact-form-section .section-content .map-container .info-contact {
+    order: 1;
+  }
 }
 .section-login {
   padding-top: 80px;

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContactoController!{% endblock %}
+
+{% block body %}
+
+  {% set vars = {'var_session': session_started, 'carrito': cart_empty, 'num_products': quantity_products } %}
+  {% include 'menu/index.html.twig' with vars %}
+
+  <section class="sn-container contact-form-section">
+    <div class="section-content">
+      
+      <div class="form-container">
+
+        <h3 class="h4">Contactanos</h3>
+
+        <form action="{{ path('app_send_msn') }}" method="POST">
+          <div class="form-group">
+            <label class="required">Nombre</label>
+            <input type="text" id="contact-name" name="nombre" required="required" class="form-control">
+          </div>
+          <div class="form-group">
+            <label class="required">Correo</label>
+            <input type="text" id="contact-correo" name="correo" required="required" class="form-control">
+          </div>
+          <div class="form-group">
+            <label class="required">Mensaje</label>
+            <textarea name="msn-content" id="text-area-msn" cols="30" rows="5" required="required"></textarea>
+          </div>
+          <div class="form-group">
+            <button type="submit" id="contact-enviar" name="send_contact" class="btn-primary btn btn-form">Enviar</button>
+          </div>
+        </form>
+
+      </div>
+      
+      <div class="map-container">
+        <div class="info-contact">
+          <h3 class="h4">Visítanos</h3>
+          <p class="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur itaque, inventore veniam praesentium voluptates maiores? Voluptas doloremque corrupti deserunt quidem minima perspiciatis cum mollitia quae? Debitis accusamus earum exercitationem dolore.</p>
+          <ul>
+            <li class="description">Ipsum dolor sit amet consectetur adipisicing elit</li>
+            <li class="description">Aspernatur itaque</li>
+            <li class="description">Voluptas doloremque corrupti</li>
+          </ul>
+        </div>
+        <div id="map"></div>
+      </div>
+    
+    </div>
+  </section>
+
+
+{% endblock %}
