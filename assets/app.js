@@ -12,8 +12,8 @@ import './styles/app.less';
 //JS imports 
 import './js/menu.js';
 import './js/homepage';
-import './js/map';
 import './js/productpage.js';
+import './js/moving-text.js';
 
 // start the Stimulus application
 import './bootstrap';
