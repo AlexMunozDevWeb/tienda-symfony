@@ -16,3 +16,8 @@ cart_checkout:
    path: /cart/checkout
    controller: App\Controller\CartController::checkout
    methods: POST
+
+app_send_msn:
+   path: /contacto/enviar
+   controller: App\Controller\ContactoController::send
+   methods: POST
