@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tienda sneakers{% endblock %}
+
+{% block body %}
+
+  {% set vars = {'var_session': session_started, 'carrito': cart_empty, 'num_products': quantity_products } %}
+  {% include 'menu/index.html.twig' with vars %}
+
+  <section class="sn-container show-productos">
+  {% for pro_cat in products_categories %}
+    <div class="content-sliders">
+      <h2 class="h2">{{ pro_cat.nombre }}</h2>
+
+      <div class="swiper swiper-home-product">
+        <div class="swiper-wrapper wrapper-home-products">
+          {% for product in products %}
+            {% if product.id_cat_id == pro_cat.id %}
+              <div class="swiper-slide slide-home-products" >
+                <a class="link-product" href="/productos/{{ product.id }}">
+                  <span class="producto-name">{{ product.nombre }}</span>
+                  <img class="single-img" src="{{ asset( product[0][0]['url'] ) }}">
+                </a>
+              </div>
+            {% endif %}
+          {% endfor %}  
+        </div>
+      </div>
+
+    </div>
+  {% endfor %}
+  </section>
+
+{% endblock %}
