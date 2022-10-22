@@ -36,7 +36,7 @@
       <div class="arrow-container">
         {# <div class="swiper-button-prev swiper-next-hero"><img class="img-prev" src="{{ asset('images/icon-previous.svg') }}" alt="Prev imagen"></div> #}
         {# <div class="swiper-button-next swiper-prev-hero"><img class="img-next" src="{{ asset('images/icon-next.svg') }}" alt="Prev imagen"></div> #}
-        <a class="anchor" data-content="go-to-content">
+        <a class="anchor" id="anchor-arrow" data-content="go-to-content">
           <img class="img-go-down" src="{{ asset('images/arrow-down-solid.svg') }}" alt="Ancla">
         </a>
       </div>
@@ -161,6 +161,7 @@
 {% block javascripts %}
   <script>
 
+    //Text moving with scroll
     jQuery(function() {
 
       function Utils() { }
@@ -205,6 +206,74 @@
           
       });
 
+    });
+
+    //anchor arrow
+    jQuery('#anchor-arrow').click(function (e) {
+      var puntero = $(this).data('content');
+      var distancia = $('div[id^="' + puntero + '"]').offset();
+      e.preventDefault();
+      
+      if ($(this).data('go-to-content') !== "all") {
+        $('body,html').animate({
+          scrollTop: distancia.top - 60 + 'px'
+        }, 600);
+      }
+    });
+
+    /**
+    * Swiper hero
+    */
+    const swiper = new Swiper('.swiper.swiper-hero', {
+      
+      slidesPerView: 1,
+      spaceBetween: 0,
+      speed: 800,
+      effect: 'fade',
+      fadeEffect: {
+        crossFade: true
+      },
+      allowTouchMove: false,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+
+    });
+
+    /**
+    * Swiper productos home
+    */
+    const swiper_home_products = new Swiper('.swiper.swiper-home-product', {
+      slidesPerView: 4,
+      spaceBetween: 25,
+      // loop:true,
+      autoplay: {
+        delay: 3000,
+      },
+      breakpoints: {
+        300: {
+          slidesPerView: 1,
+          spaceBetween: 10
+        },
+        430: {
+          slidesPerView: 2,
+          spaceBetween: 15
+        },
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 20
+        },
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 20
+        }
+      },
+      // Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
     });
 
   </script>
