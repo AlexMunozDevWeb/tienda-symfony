@@ -53,3 +53,12 @@
   </div>
 </header>
 
+{% block javascripts %}
+  <script>
+    //Abrir carrito
+    $( '.user-link-photo' ).on( 'click', function () {
+      $( '.close-session' ).toggleClass( 'open' );
+    } );
+  </script>
+{% endblock %}
+
