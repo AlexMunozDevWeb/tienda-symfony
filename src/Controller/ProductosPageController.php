@@ -31,12 +31,19 @@ class ProductosPageController extends AbstractController
     $stock = $this->em->getRepository( Productos::class )->getProductStock( $id );
     $img_product = $this->em->getRepository( Imagenes::class )->getImgsProducts( $id );
 
+    $session_started = $this->em->getRepository( Usuarios::class )->checkSessionStart( $sess );
+
+    $cart_detail = $this->em->getRepository( Productos::class )->getCart( $sess );
+    
     return $this->render('productos_page/index.html.twig', [
-      'session_started' => $session_started,
-      'id'              => $id,
-      'product'         => $product,
-      'imgs'            => $img_product,
-      'stock'           => $stock
+      'session_started'   => $session_started,
+      'id'                => $id,
+      'product'           => $product,
+      'imgs'              => $img_product,
+      'stock'             => $stock,
+      'session_started'   => $session_started,
+      'cart_empty'        => $sess->has('carrito'),
+      'quantity_products' => $sess->has( 'carrito' ) ? count($cart_detail) : '',
     ]);
   }
 }

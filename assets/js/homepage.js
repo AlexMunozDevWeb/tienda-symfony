@@ -1,11 +1,51 @@
 
-
+/**
+ * Swiper hero
+ */
 const swiper = new Swiper('.swiper.swiper-hero', {
-  slidesPerView: 'auto',
-  spaceBetween: 10,
-  loop:true,
+  
+  slidesPerView: 1,
+  spaceBetween: 0,
+  speed: 800,
+  effect: 'fade',
+  fadeEffect: {
+    crossFade: true
+  },
+  allowTouchMove: false,
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+  },
+
+});
+
+/**
+ * Swiper productos home
+ */
+const swiper_home_products = new Swiper('.swiper.swiper-home-product', {
+  slidesPerView: 4,
+  spaceBetween: 25,
+  // loop:true,
   autoplay: {
     delay: 3000,
+  },
+  breakpoints: {
+    300: {
+      slidesPerView: 1,
+      spaceBetween: 10
+    },
+    430: {
+      slidesPerView: 2,
+      spaceBetween: 15
+    },
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 20
+    },
+    1024: {
+      slidesPerView: 4,
+      spaceBetween: 20
+    }
   },
   // Navigation arrows
   navigation: {

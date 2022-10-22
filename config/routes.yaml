@@ -6,3 +6,18 @@ product_page:
    path: /productos/{id}
    controller: App\Controller\ProductosPageController::index
    methods: GET
+
+app_cart_remove:
+   path: /cart/{id}
+   controller: App\Controller\CartController::delete_row
+   methods: GET
+
+cart_checkout:
+   path: /cart/checkout
+   controller: App\Controller\CartController::checkout
+   methods: POST
+
+app_send_msn:
+   path: /contacto/enviar
+   controller: App\Controller\ContactoController::send
+   methods: POST

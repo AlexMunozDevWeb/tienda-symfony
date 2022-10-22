@@ -10,9 +10,8 @@
         <img class="img-title" src="{{ asset( 'images/logo.svg' ) }}" alt="Logo">
       </a>
       <ul class="menu-links">
-        <li><a href="#" class="single-link" >zapatillas</a></li>
-        <li><a href="#" class="single-link" >About</a></li>
-        <li><a href="#" class="single-link" >Contact</a></li>
+        <li><a href="{{ url('app_tienda') }}" class="single-link" >Tienda</a></li>
+        <li><a href="{{ url('app_contacto') }}" class="single-link" >Contacto</a></li>
       </ul>
     </div>
     <div class="right-side-menu">
@@ -20,20 +19,26 @@
         <a href="{{ url('app_cart') }}" class="cart-link">
           <div class="cart-icon-container">
             <span class="icon-cart" style="background-image:url('{{ asset('images/icon-cart.svg') }}')"></span>
-            <span class="quantity">1</span>
-          </div>
-          <div class="cart-content">
-            <div class="title-cart">Cart item name</div>
-            <div class="separador"></div>
-            <div class="item-description">
-              Descripcion del producto
-            </div>
+            {% if cart_empty %}
+              <span class="quantity">{{ quantity_products }}</span>
+            {% endif %}
           </div>
         </a>
       {% endif %}
-      <a href="{{ url('app_login') }}" class="user-link">
-        <span class="icon-user" style="background-image:url('{{ asset('images/icon-user.svg') }}')"></span>
-      </a>
+  
+      {% if session_started %}
+        <div class="user-link-photo">
+          <img class="icon-user-photo" src="{{ asset('images/image-avatar.png') }}">
+          <div class="close-session">
+            <a class="link-logout" href="{{ url('app_logout') }}">Cerrar sesión.</a>
+          </div>
+        </div>
+      {% endif %}
+      {% if session_started == false %}
+        <a href="{{ url('app_login') }}" class="user-link">
+          <span class="icon-user" style="background-image:url('{{ asset('images/icon-user.svg') }}')"></span>
+        </a>
+      {% endif %}
     </div>
 
   </nav>
