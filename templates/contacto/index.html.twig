@@ -63,5 +63,17 @@
     }).addTo(map);
     var marker = L.marker([38.612477, -1.111100]).addTo(map);
     marker.bindPopup("<b class='pin-text'>Ven a visitarnos.</b>").openPopup();
+    
+    //Abrir menu
+    document.getElementById('open-menu-mobile').addEventListener("click", function(){
+      var lem = document.getElementsByClassName('menu-mobile');
+      lem[0].classList.add( 'open' );
+    });
+    //Cerrar menu
+    document.getElementById('close-menu-mobile').addEventListener("click", function(){
+      var lem = document.getElementsByClassName('menu-mobile');
+      lem[0].classList.remove( 'open' );
+    });
+
   </script>
 {% endblock %}
