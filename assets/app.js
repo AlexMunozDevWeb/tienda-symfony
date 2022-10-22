@@ -13,7 +13,6 @@ import './styles/app.less';
 import './js/menu.js';
 import './js/homepage';
 import './js/productpage.js';
-import './js/moving-text.js';
 
 // start the Stimulus application
 import './bootstrap';
