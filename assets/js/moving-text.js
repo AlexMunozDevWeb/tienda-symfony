@@ -26,22 +26,19 @@ jQuery(function() {
     
     var isElementInView = Utils.isElementInView( jQuery('#moving-brands'), false );
     
-    if( jQuery(window).width() > 1024 ){
-      if (isElementInView) {
-        var st = $(this).scrollTop();
-        if (st > lastScrollTop){
-          amount += 5;
-          $("#moving-brands").css( 'transform', 'translateX(' + amount + 'px)' );
-        } else {
-          amount -= 5;
-          $("#moving-brands").css( 'transform', 'translateX(' + amount + 'px)' );
-        }
-        lastScrollTop = st;
+    if (isElementInView) {
+      var st = $(this).scrollTop();
+      if (st > lastScrollTop){
+        amount += 5;
+        $("#moving-brands").css( 'transform', 'translateX(' + amount + 'px)' );
       } else {
+        amount -= 5;
         $("#moving-brands").css( 'transform', 'translateX(' + amount + 'px)' );
       }
+      lastScrollTop = st;
+    } else {
+      $("#moving-brands").css( 'transform', 'translateX(' + amount + 'px)' );
     }
-    
       
   });
 
