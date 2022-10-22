@@ -7,7 +7,6 @@ $( '.user-link-photo' ).on( 'click', function () {
 
 //Abrir menu
 $( '#open-menu-mobile' ).on( 'click', function () {
-  console.log('abrir');
   $( '.menu-mobile' ).addClass( 'open' );
 } );
 

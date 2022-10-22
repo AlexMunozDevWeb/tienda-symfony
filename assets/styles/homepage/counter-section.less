@@ -1,0 +1,63 @@
+.section-counters{
+  display: flex;
+  margin-top: 5%;
+  height: auto;
+  .info-wrapper{
+    background-color: @very-dark-blue;
+    box-sizing: border-box;
+    padding: 30px;
+    width: 50%;
+    .quantities{
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat( 3, 1fr);
+      grid-gap: 20px;
+    }
+  }
+  .img-wrapper{
+    position: relative;
+    width: 50%;
+    .img-company{
+      display: block;
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+    .overlay{
+      background-color: @orange;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0.4;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  @media ( max-width:768px ) {
+    flex-direction: column;
+    .info-wrapper{
+      order: 2;
+      text-align: center;
+      width: 100%;
+      .quantities{
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat( 1, 1fr);
+        grid-gap: 20px;
+        .sells, .companies, .countries{
+          p.h3{
+            margin: 0;
+          }
+          p.f-dark-grayish-blue{
+            margin-top: 0;
+          }
+        }
+      }
+    }
+    .img-wrapper{
+      order: 1;
+      position: relative;
+      width: 100%;
+    }
+  }
+}
