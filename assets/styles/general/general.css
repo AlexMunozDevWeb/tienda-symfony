@@ -76,6 +76,9 @@ p.price {
 .b-g-blue {
   border-bottom: 1px solid hsl(220, 14%, 75%);
 }
+.border-none {
+  border: unset!important;
+}
 a {
   color: hsl(0, 0%, 0%);
   font-family: 'Roboto Slab', serif;
@@ -120,6 +123,9 @@ input[type=number] {
 }
 .sn-container {
   padding: 0 10%;
+}
+.p-0 {
+  padding: 0!important;
 }
 @media screen and (max-width: 768px) {
   .sn-container {
