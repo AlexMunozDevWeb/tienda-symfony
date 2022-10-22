@@ -67,6 +67,9 @@ p.price {
 .f-grayish-blue {
   color: hsl(220, 14%, 75%);
 }
+.f-light-grayish-blue {
+  color: hsl(223, 64%, 98%);
+}
 .f-white {
   color: hsl(0, 0%, 100%);
 }
