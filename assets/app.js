@@ -11,7 +11,6 @@ import './styles/app.less';
 
 //JS imports 
 import './js/menu.js';
-import './js/homepage';
 import './js/productpage.js';
 
 // start the Stimulus application

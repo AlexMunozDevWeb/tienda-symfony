@@ -11,17 +11,33 @@
     <div class="swiper swiper-hero">
       <!-- Additional required wrapper -->
       <div class="swiper-wrapper wrapper-hero">
-        <div class="swiper-slide slide-hero"><img class="slider-img" src="{{ asset( 'images/products/image-product-1.jpg' ) }}" alt="Imagen1"></div>
-        <div class="swiper-slide slide-hero"><img class="slider-img" src="{{ asset( 'images/products/image-product-2.jpg' ) }}" alt="Imagen2"></div>
-        <div class="swiper-slide slide-hero"><img class="slider-img" src="{{ asset( 'images/products/image-product-3.jpg' ) }}" alt="Imagen3"></div>
-        <div class="swiper-slide slide-hero"><img class="slider-img" src="{{ asset( 'images/products/image-product-4.jpg' ) }}" alt="Imagen4"></div>
+        <div class="swiper-slide slide-hero">
+          <img class="slider-img" src="{{ asset( 'images/hero/hero-basket.jpg' ) }}" alt="Imagen1">
+          <div class="overlay"></div>
+        </div>
+        <div class="swiper-slide slide-hero">
+          <img class="slider-img" src="{{ asset( 'images/hero/hero-nike.jpg' ) }}" alt="Imagen2">
+          <div class="overlay"></div>
+        </div>
+        <div class="swiper-slide slide-hero">
+          <img class="slider-img" src="{{ asset( 'images/hero/hero-shoes.jpg' ) }}" alt="Imagen3">
+          <div class="overlay"></div>
+        </div>
+        <div class="swiper-slide slide-hero">
+          <img class="slider-img" src="{{ asset( 'images/hero/hero-nike2.jpg' ) }}" alt="Imagen4">
+          <div class="overlay"></div>
+        </div>
+        <div class="swiper-slide slide-hero">
+          <img class="slider-img" src="{{ asset( 'images/hero/hero-shoes2.jpg' ) }}" alt="Imagen4">
+          <div class="overlay"></div>
+        </div>
       </div>
       <!-- If we need navigation buttons -->
       <div class="arrow-container">
-        <div class="swiper-button-prev"><img class="img-prev" src="{{ asset('images/icon-previous.svg') }}" alt="Prev imagen"></div>
-        <div class="swiper-button-next"><img class="img-next" src="{{ asset('images/icon-next.svg') }}" alt="Prev imagen"></div>
-        <a class="anchor" data-content="go-to-content">
-          <img class="img-go-down" src="{{ asset('images/go-down.svg') }}" alt="Ancla">
+        {# <div class="swiper-button-prev swiper-next-hero"><img class="img-prev" src="{{ asset('images/icon-previous.svg') }}" alt="Prev imagen"></div> #}
+        {# <div class="swiper-button-next swiper-prev-hero"><img class="img-next" src="{{ asset('images/icon-next.svg') }}" alt="Prev imagen"></div> #}
+        <a class="anchor" id="anchor-arrow" data-content="go-to-content">
+          <img class="img-go-down" src="{{ asset('images/arrow-down-solid.svg') }}" alt="Ancla">
         </a>
       </div>
 
@@ -29,29 +45,201 @@
     <div id="go-to-content"></div>    
   </section>
 
-  {% for pro_cat in products_categories %}
-  <section class="sn-container show-productos container-products-{{ pro_cat.cantidad }}">
-    <h2 class="h2">{{ pro_cat.nombre }}</h2>
+  <section class="sn-container pre-order">
+    <div class="order-container">
+      <h2 class="h2 f-black b-g-blue">Mikakus sneakers</h2>
+      <p class="description">Las New Boom Génesis son una reinterpretación de nuestras emblemáticas zapatillas multicolor: las Boom. Pensadas por y para personas con gran personalidad, se inspiran en las zapatillas de estilo chunky con especial énfasis en el máximo confort.</p>
+      <a href="#" class="standard-link link-reserva">Reserva</a>
+    </div>
+    <div class="img-container" style="background-image: url( {{ asset( 'images/new/new-product-1.jpg' ) }} );"></div>
+  </section>
 
-    <div class="swiper swiper-home-product">
-      <div class="swiper-wrapper wrapper-home-products">
-        {% for product in products %}
-          {% if product.id_cat_id == pro_cat.id %}
-            <div class="swiper-slide slide-home-products" >
-              <a class="link-product" href="/productos/{{ product.id }}">
-              {# {{ product.nombre }} #}
-                <img class="single-img" src="{{ asset( product[0][0]['url'] ) }}">
-              </a>
-            </div>
-          {% endif %}
-        {% endfor %}  
-      </div>
-      
-      {# <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div> #}
+  <section class="sn-container pre-order inverse">
+    <div class="order-container">
+      <h2 class="h2 f-black b-g-blue">Giannis immortality2</h2>
+      <p class="description">Pensada para personas con gran personalidad. Con una suela oversized de la casa Vibram de 3,5cm y materiales como el SEAQUAL YARN son un claro ejemplo de la moda sostenible del futuro. Además incorpora una plantilla 100% reciclada. El sistema de cordones está inspirado en las zapatillas de trail running modernas para otorgarle un aire más deportivo.</p>
+      <a href="#" class="standard-link link-reserva">Reserva</a>
+    </div>
+    <div class="img-container" style="background-image: url( {{ asset( 'images/new/new-product-2.jpg' ) }} );"></div>
+  </section>
 
+  <section class="info-delivery-component sn-container">
+    <div class="card-1">
+      <img src="{{ asset( 'images/icons/cart-shopping-solid.svg' ) }}" alt="">
+      <h2 class="h2">Lorem ipsum</h2>
+      <p class="description">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+    </div>
+    <div class="card-2">
+      <img src="{{ asset( 'images/icons/house-solid.svg' ) }}" alt="">
+      <h2 class="h2">Lorem house</h2>
+      <p class="description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    </div>
+    <div class="card-3">
+      <img src="{{ asset( 'images/icons/shield-solid.svg' ) }}" alt="">
+      <h2 class="h2">Lorem shield</h2>
+      <p class="description">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system.</p>
+    </div>
+    <div class="card-4">
+      <img src="{{ asset( 'images/icons/truck-solid.svg' ) }}" alt="">
+      <h2 class="h2">Lorem truck</h2>
+      <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
     </div>
   </section>
-  {% endfor %}
 
+  <section class="sn-container">
+    <div class="section-img-scroll-text" style="background-image: url( {{ asset('images/brands/map-brands.png') }} );">
+      <h2 class="title-section hmy-text always-30-map-brands heighter before-text-navy-70">Confiamos en nuestras marcas</h2>
+      <div class="container-img-brands" id="moving-brands">
+        <div class="single-img-container">
+          <img class="brand-img" src="{{ asset('images/brands/W.png') }}" alt="w">
+        </div>
+        <div class="single-img-container">
+          <img class="brand-img" src="{{ asset('images/brands/Yamaha.png') }}" alt="Yamaha">
+        </div>
+        <div class="single-img-container">
+          <img class="brand-img" src="{{ asset('images/brands/Puma.png') }}" alt="Puma">
+        </div>
+        <div class="single-img-container">
+          <img class="brand-img" src="{{ asset('images/brands/Occitane.png') }}" alt="Occitane">
+        </div>
+        <div class="single-img-container">
+          <img class="brand-img" src="{{ asset('images/brands/Desigual.png') }}" alt="Desigual">
+        </div>
+        <div class="single-img-container">
+          <img class="brand-img" src="{{ asset('images/brands/Coach.png') }}" alt="Coach">
+        </div>
+        <img class="brand-img" src="{{ asset('images/brands/W.png') }}" alt="w">
+        <img class="brand-img" src="{{ asset('images/brands/Yamaha.png') }}" alt="Yamaha">
+        <img class="brand-img" src="{{ asset('images/brands/Puma.png') }}" alt="Puma">
+        <img class="brand-img" src="{{ asset('images/brands/Occitane.png') }}" alt="Occitane">
+        <img class="brand-img" src="{{ asset('images/brands/Desigual.png') }}" alt="Desigual">
+        <img class="brand-img" src="{{ asset('images/brands/Coach.png') }}" alt="Coach">
+      </div>
+    </div>
+  </section>
+
+  <section class="sn-container section-counters">
+    <div class="info-wrapper">
+      <h2 class="h2 f-white">Lorem Ipsum is <span class="f-orange"> simply dummy </span> text of the printing and typesetting industry. </h2>
+      <p class="description f-dark-grayish-blue">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+      <div class="quantities">
+        <div class="sells f-white">
+          <p class="h3">10k+</p>
+          <p class="f-dark-grayish-blue">Ventas</p>
+        </div>
+        <div class="companies f-white">
+          <p class="h3">234</p>
+          <p class="f-dark-grayish-blue">Companies</p>
+        </div>
+        <div class="countries f-white">
+          <p class="h3">40+</p>
+          <p class="f-dark-grayish-blue">Countries</p>
+        </div>
+      </div>
+    </div>
+    <div class="img-wrapper">
+      <img class="img-company" src="{{ asset( 'images/network.jpg' ) }}" alt="">
+      <div class="overlay"></div>
+    </div>
+  </section>
+
+  <section class="sn-container">
+    <section  class="section-text-button">
+      <div class="line-wrapper">
+        <a class="link-text" href="{{ url('app_contacto') }}" style="cursor: url('{{ asset('/images/primary-button.png') }}'), pointer;">
+          <p class="line">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat autem illo iure impedit, possimus libero dolores quos quaerat ducimus voluptatem esse, doloribus eaque consequatur fuga. Nostrum, fugit. Recusandae, neque reprehenderit.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat autem illo iure impedit, possimus libero dolores quos quaerat ducimus voluptatem esse, doloribus eaque consequatur fuga. Nostrum, fugit. Recusandae, neque reprehenderit.
+          </p>
+        </a>
+      </div>
+    </section>
+  </section>
+
+{% endblock %}
+
+{% block javascripts %}
+  <script>
+
+    //Text moving with scroll
+    jQuery(function() {
+
+      function Utils() { }
+      
+      Utils.prototype = {
+          constructor: Utils,
+          isElementInView: function (element, fullyInView) {
+            var pageTop = $(window).scrollTop();
+            var pageBottom = pageTop + $(window).height();
+            var elementTop = $(element).offset().top;
+            var elementBottom = elementTop + $(element).height();
+
+            if (fullyInView === true) {
+                return ((pageTop < elementTop) && (pageBottom > elementBottom));
+            } else {
+                return ((elementTop <= pageBottom) && (elementBottom >= pageTop));
+            }
+          }
+      };
+      
+      var Utils = new Utils();
+
+      var amount = 0;
+      var lastScrollTop = 0;
+      jQuery(window).scroll(function(event) {
+        
+        var isElementInView = Utils.isElementInView( jQuery('#moving-brands'), false );
+        
+        if (isElementInView) {
+          var st = $(this).scrollTop();
+          if (st > lastScrollTop){
+            amount += 5;
+            $("#moving-brands").css( 'transform', 'translateX(' + amount + 'px)' );
+          } else {
+            amount -= 5;
+            $("#moving-brands").css( 'transform', 'translateX(' + amount + 'px)' );
+          }
+          lastScrollTop = st;
+        } else {
+          $("#moving-brands").css( 'transform', 'translateX(' + amount + 'px)' );
+        }
+          
+      });
+
+    });
+
+    //anchor arrow
+    jQuery('#anchor-arrow').click(function (e) {
+      var puntero = $(this).data('content');
+      var distancia = $('div[id^="' + puntero + '"]').offset();
+      e.preventDefault();
+      
+      if ($(this).data('go-to-content') !== "all") {
+        $('body,html').animate({
+          scrollTop: distancia.top - 60 + 'px'
+        }, 600);
+      }
+    });
+
+    /**
+    * Swiper hero
+    */
+    const swiper = new Swiper('.swiper.swiper-hero', {
+      
+      slidesPerView: 1,
+      spaceBetween: 0,
+      speed: 800,
+      effect: 'fade',
+      fadeEffect: {
+        crossFade: true
+      },
+      allowTouchMove: false,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+
+    });
+
+  </script>
 {% endblock %}

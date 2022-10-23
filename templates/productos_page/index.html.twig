@@ -23,9 +23,6 @@
             {% endfor %}
           </div>
 
-          {# <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div> #}
-
         </div>
         
       </div>
@@ -54,6 +51,26 @@
         {% endif %}
       </div>
     
+    </div>
+  </section>
+  
+  <section class="sn-container show-productos">
+    <div class="content-sliders border-none p-0">
+      <h2 class="h2">Productos mas vendidos</h2>
+
+      <div class="swiper swiper-home-product">
+        <div class="swiper-wrapper wrapper-home-products">
+          {% for product in most_sell_products %}
+            <div class="swiper-slide slide-home-products" >
+              <a class="link-product" href="/productos/{{ product.id }}">
+                <span class="producto-name">{{ product.name }}</span>
+                <img class="single-img" src="{{ asset( product['url_img'] ) }}">
+              </a>
+            </div>
+          {% endfor %}  
+        </div>
+      </div>
+
     </div>
   </section>
 {% endblock %}
