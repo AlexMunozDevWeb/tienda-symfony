@@ -19,15 +19,17 @@
   <section class="sn-container cart-section-container">
     <div class="cart-wrapper">
       <h2 class="h2 title-cart">Carrito</h2>
+      {% set total = 0 %}
       {% for product in details_cart %}
-      {% set total = product['precio'] * product['cantidad'] %}
+      {% set total_single = product['precio'] * product['cantidad'] %}
+      {% set total = total + total_single %}
       <div class="single-line-cart">
         <div class="name-img">
           <img class="img-product" src="{{ asset( product['url_img'] ) }}">
           <p class="name-product">{{ product['product_name'] }}</p>
         </div>
         <div class="price-icon">
-          <p class="price">{{ product['precio'] }} x {{ product['cantidad'] }} = {{ total }} €</p>
+          <p class="price">{{ product['precio'] }} x {{ product['cantidad'] }} = {{ total_single }} €</p>
           <a class="link-delete" href="{{ product['slug'] ~ product['id_pro'] }}">
             <img class="icon-delete" src="{{ asset( 'images/icon-delete.svg' ) }}">
           </a>
@@ -38,6 +40,7 @@
       {% if details_cart is not empty %}
       <div class="form-checkout">
         <form action="{{ path('cart_checkout') }}" method="POST">
+          <div class="total-bill">Total: <span>{{ total }} €</span></div>
           <input class="btn-checkout" type="submit" value="Realizar compra">
         </form>
       </div>
