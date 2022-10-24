@@ -77,35 +77,12 @@ header.menu-section{
         border: 2px solid @white;
         box-sizing: border-box;
         transition: all .2s;
-        .icon-user-photo{
+        a.img-link, a.img-link .icon-user-photo{
           height: 34px;
           width: 34px;
         }
         &:hover{
           border: 2px solid @orange;
-        }
-        .close-session{      
-          background-color: @white;
-          border: 1px solid @orange;
-          border-radius: 10px;
-          position: absolute;
-          height: 39px;
-          width: 120px;
-          top: 34px;
-          right: -50px;
-          display: none;
-          align-items: center;
-          justify-content: center;
-          &.open{
-            display: flex;
-          }
-          .link-logout{
-            color: @dark-grayish-blue;
-            transition: all .3s ease-in-out;
-            &:hover{
-              color: @black;
-            }
-          }
         }
       }
       .cart-link, .user-link, .user-link-photo{

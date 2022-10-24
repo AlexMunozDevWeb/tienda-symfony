@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panel de usuario{% endblock %}
+
+{% block body %}
+
+  {% set vars = {'var_session': session_started, 'carrito': cart_empty, 'num_products': quantity_products } %}
+  {% include 'menu/index.html.twig' with vars %}  
+
+{% endblock %}

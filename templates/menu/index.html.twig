@@ -28,10 +28,9 @@
   
       {% if session_started %}
         <div class="user-link-photo">
-          <img class="icon-user-photo" src="{{ asset('images/image-avatar.png') }}">
-          <div class="close-session">
-            <a class="link-logout" href="{{ url('app_logout') }}">Cerrar sesión.</a>
-          </div>
+          <a class="img-link" href="{{ url('app_panelusuario') }}">
+            <img class="icon-user-photo" src="{{ asset('images/image-avatar.png') }}">
+          </a>
         </div>
       {% endif %}
       {% if session_started == false %}
