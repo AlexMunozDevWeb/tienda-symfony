@@ -70,20 +70,44 @@ section.cart-section-container{
       }
       border-bottom: 1px solid @grayish-blue;
     }
+    .total-bill {
+      color: @dark-grayish-blue;
+      font-size: 16px;  
+      margin-top: 20px;
+      text-align: right;
+      font-weight: 600;
+    }
     .form-checkout{
       display: flex;
+      flex-direction: unset;
       justify-content: flex-end;
       margin-top: 20px;
       width: 100%;
-      form{
+      a.back-to-shop{
+        background-color: @white;
+        box-sizing: border-box;
+        border: 2px solid @orange;
+        border-radius: 10px;
+        color: @orange;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        height: 50px;
+        transition: all 0.3s ease-in-out;
         width: 30%;
-        .total-bill {
-          color: @dark-grayish-blue;
-          font-size: 16px;  
-          margin-bottom: 20px;
-          text-align: right;
-          font-weight: 600;
+        margin-right: 30px;
+        &:hover{
+          background-color: @orange;
+          color: @white;
         }
+      }     
+      form{
+        border: unset;
+        margin: 0;
+        padding: 0;
+        width: 30%;
         .btn-checkout{
           background-color: hsl(26, 100%, 55%);
           box-sizing: border-box;
@@ -110,6 +134,12 @@ section.cart-section-container{
 @media ( max-width: 768px ) {
   section.cart-section-container{
     .form-checkout{
+      flex-direction: column!important;
+      .back-to-shop{
+        margin-bottom: 20px!important;
+        margin-right: 0!important;
+        width: 100%!important;
+      }
       form{
         width: 100%!important;
       }

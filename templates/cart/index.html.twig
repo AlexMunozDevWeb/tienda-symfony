@@ -38,9 +38,10 @@
       {% endfor %}
 
       {% if details_cart is not empty %}
+      <div class="total-bill">Total: <span>{{ total }} €</span></div>
       <div class="form-checkout">
+        <a href="{{ url( 'app_tienda' ) }}" class="back-to-shop" >Seguir comprando</a>
         <form action="{{ path('cart_checkout') }}" method="POST">
-          <div class="total-bill">Total: <span>{{ total }} €</span></div>
           <input class="btn-checkout" type="submit" value="Realizar compra">
         </form>
       </div>
