@@ -1,0 +1,22 @@
+section.panel-user-container {
+  padding-top: 80px;
+}
+section.panel-user-container .panel-user-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+  margin-top: 10%;
+}
+section.panel-user-container .panel-user-wrapper .menu-user-container {
+  grid-column-start: 1;
+  grid-column-end: 1;
+}
+section.panel-user-container .panel-user-wrapper .content-panel-user {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+@media (max-width: 768px) {
+  section.panel-user-container .panel-user-wrapper {
+    margin-top: 5%;
+  }
+}
