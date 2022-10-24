@@ -6,5 +6,62 @@
 
   {% set vars = {'var_session': session_started, 'carrito': cart_empty, 'num_products': quantity_products } %}
   {% include 'menu/index.html.twig' with vars %}  
+  <section class="sn-container panel-user-container">
+    <div class="panel-user-wrapper">
+      <div class="menu-user-container">
+        <a class="link-panel-user" id="info-user" href="#">Información de usuario</a>
+        <a class="link-panel-user" id="order-user" href="#">Pedidos</a>
+        <a class="link-panel-user" href="{{ url('app_logout') }}">Cerrar sesión</a>
+      </div>
+      <div class="content-panel-user">
+        <div class="info-user-content active">
+          <h2 class="h3">Información de usuario</h2>
+          <form action="{{ path('app_panelusuario_modify') }}" method="post">
+            <div class="form-group">
+              <label>Dirección</label>
+              <input type="text" name="address" value="{{ info_user[0]['direccion'] }}" required>
+            </div>
+            <div class="form-group">
+              <label>CP</label>
+              <input type="text" name="cp" value="{{ info_user[0]['cp'] }}" required>
+            </div>
+            <div class="form-group">
+              <label>Ciudad</label>
+              <input type="text" name="city" value="{{ info_user[0]['ciudad'] }}" required>
+            </div>
+            <div class="form-group">
+              <label>Country</label>
+              <input type="text" name="country" value="{{ info_user[0]['pais'] }}" required>
+            </div>
+            <div class="form-group">
+              <input type="hidden" name='id' value="{{ info_user[0]['id'] }}">
+              <input type="submit" class="btn-form" value="Modificar usuario">
+            </div>
+          </form>
+        </div>
+        <div class="orders-info">info orders</div>
+      </div>
+    </div>
+  </section>
 
+{% endblock %}
+
+{% block javascripts %}
+  <script>
+
+    $( '#info-user' ).on( 'click', function () { 
+      if( !$( '.info-user-content' ).hasClass( 'active') ){
+        $( '.info-user-content' ).toggleClass('active')
+        $( '.orders-info' ).toggleClass('active')
+      }
+    });
+
+    $( '#order-user' ).on( 'click', function () { 
+      if( !$( '.orders-info' ).hasClass( 'active') ){
+        $( '.info-user-content' ).toggleClass('active')
+        $( '.orders-info' ).toggleClass('active')
+      }
+    });
+
+  </script>
 {% endblock %}
