@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProductosPageController!{% endblock %}
+{% block title %}Página de producto{% endblock %}
 
 {% block body %}
   
@@ -37,7 +37,7 @@
           <form action="{{ path('app_cart') }}" method="post">
             <div class="amount">
               <input id="minus" class="minus" type="button" name="minus" value="-">
-              <input id="quantity" class="quantity" type="number" name="quantity" value="0" min="0" max="{{ stock[0]['stock'] }}">
+              <input id="quantity" class="quantity" type="number" name="quantity" value="1" min="1" max="{{ stock[0]['stock'] }}">
               <input id="sum" class="sum" type="button" name="sum" value="+">
               <input type="hidden" name="id_pro" value="{{ product.id }}">
             </div>
@@ -47,7 +47,7 @@
           </form>
         {% endif %}
         {% if session_started == false %}
-          <a class="login-to-buy" href="{{ url('app_login') }}">Inicie sesion</a> <span class="out-of-link"> para comprar.</span>
+          <a class="login-to-buy" href="{{ url('app_login') }}">Inicie sesión</a> <span class="out-of-link"> para comprar.</span>
         {% endif %}
       </div>
     
@@ -71,4 +71,52 @@
     </div>
 
   </section>
+{% endblock %}
+{% block javascripts %}
+  <script>
+        
+    const swiper = new Swiper('.swiper.swiper-single-product', {
+      slidesPerView: 4,
+      spaceBetween: 25,
+      loop:true,
+      autoplay: {
+        delay: 3000,
+      },
+      // Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+
+    $('#quantity').on('keyup', function () {
+      var max_value = parseInt($( '#quantity' ).attr( 'max' ));
+      var quantity = parseInt($('#quantity').val()); 
+      if ( quantity > max_value ) {
+        $('#quantity').val( max_value );
+      }
+      if ( quantity < 0 ) {
+        $('#quantity').val( 0 );
+      }
+      if ( quantity == '' ) {
+        $('#quantity').val( 1 );
+      }
+    })
+
+    $('#minus').on('click', function () {
+      if ( $('#quantity').val() > 1 ) {
+        $('#quantity').val( $('#quantity').val() - 1 );
+      }
+    })
+
+    $('#sum').on('click', function () {
+      var max_value = parseInt($( '#quantity' ).attr( 'max' ));
+      var quantity = parseInt($('#quantity').val()); 
+      if ( quantity >= 1 && quantity < max_value ) {
+        quantity++;
+        $('#quantity').val( quantity );
+      }
+    })
+
+  </script>
 {% endblock %}
