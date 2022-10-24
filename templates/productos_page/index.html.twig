@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProductosPageController!{% endblock %}
+{% block title %}Página de producto{% endblock %}
 
 {% block body %}
   
@@ -47,7 +47,7 @@
           </form>
         {% endif %}
         {% if session_started == false %}
-          <a class="login-to-buy" href="{{ url('app_login') }}">Inicie sesion</a> <span class="out-of-link"> para comprar.</span>
+          <a class="login-to-buy" href="{{ url('app_login') }}">Inicie sesión</a> <span class="out-of-link"> para comprar.</span>
         {% endif %}
       </div>
     
