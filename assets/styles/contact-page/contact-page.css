@@ -1,0 +1,6 @@
+section.contact-form-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 30px;
+  padding-top: 80px;
+}

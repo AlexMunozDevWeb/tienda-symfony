@@ -39,6 +39,9 @@ class ProductosRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * Get all products id categories
+     */
     public function getAllProductsCatsId(){
       $conn = $this->getEntityManager()->getConnection();
       $sql = 'SELECT cat.id as id, cat.nombre, IFNULL( products.cantidad, 0 ) as cantidad
@@ -52,6 +55,10 @@ class ProductosRepository extends ServiceEntityRepository
       $resultSet = $stmt->executeQuery();
       return $resultSet->fetchAllAssociative();
     }
+
+    /** 
+     * Get all products
+    */
     public function getAllProducts(){
       $conn = $this->getEntityManager()->getConnection();
       $sql = 'SELECT * FROM productos';
@@ -59,12 +66,88 @@ class ProductosRepository extends ServiceEntityRepository
       $resultSet = $stmt->executeQuery();
       return $resultSet->fetchAllAssociative();
     }
+
+    /**
+     * Get the product stock
+     */
     public function getProductStock( $id ){
       $conn = $this->getEntityManager()->getConnection();
       $sql = "SELECT stock FROM productos WHERE id = '$id'";
       $stmt = $conn->prepare($sql);
       $resultSet = $stmt->executeQuery();
       return $resultSet->fetchAllAssociative();
+    }
+
+    /**
+     * Get the 4 product most sold
+     */
+    public function mostSellProducts(){
+      $conn = $this->getEntityManager()->getConnection();
+      $sql = "SELECT distinct( productos_pedidos.cod_producto_id ) as id, 
+                     count( productos_pedidos.cod_producto_id) as numPedidos
+              FROM productos_pedidos
+              GROUP BY productos_pedidos.cod_producto_id
+              ORDER BY numPedidos desc
+              LIMIT 4";
+      $stmt = $conn->prepare($sql);
+      $resultSet = $stmt->executeQuery();
+      return $resultSet->fetchAllAssociative();
+    }
+
+    /**
+     * Get name of a product
+     */
+    
+    public function getNameProduct( $id ){
+      $conn = $this->getEntityManager()->getConnection();
+      $sql = "SELECT productos.nombre FROM productos WHERE productos.id = '$id'";
+      $stmt = $conn->prepare($sql);
+      $resultSet = $stmt->executeQuery();
+      return $resultSet->fetchAllAssociative();
+    }
+    
+    /**
+     * Get cart if exists
+     */
+    public function getCart( $session ){
+      $cart_detail = '';
+      if( $session->has( 'carrito' ) ){
+        $cart_session = $session->get( 'carrito');
+        $keys_cart = array_keys( $cart_session );
+        $cart_detail = array(['id_pro' => 0,'cantidad' => '']);
+    
+        for ($i=0; $i < count($cart_session); $i++) { 
+
+          $correo_user = $session->get('correo');
+          $conn = $this->getEntityManager()->getConnection();
+          $sql = "SELECT id FROM usuarios WHERE correo = '$correo_user'";
+          $stmt = $conn->prepare($sql);
+          $resultSet = $stmt->executeQuery();
+          $imgs = $resultSet->fetchAllAssociative();
+          $cart_detail[$i]['usuario_id'] = $imgs[0]['id'];
+
+          $conn = $this->getEntityManager()->getConnection();
+          $sql = "SELECT url FROM imagenes WHERE id_producto_id = '$keys_cart[$i]'";
+          $stmt = $conn->prepare($sql);
+          $resultSet = $stmt->executeQuery();
+          $imgs = $resultSet->fetchAllAssociative();
+          $cart_detail[$i]['url_img'] = $imgs[0]['url'];
+          
+          $conn = $this->getEntityManager()->getConnection();
+          $sql = "SELECT nombre, precio FROM productos WHERE id = '$keys_cart[$i]'";
+          $stmt = $conn->prepare($sql);
+          $resultSet = $stmt->executeQuery();
+          $name = $resultSet->fetchAllAssociative();
+          $cart_detail[$i]['product_name'] = $name[0]['nombre'];
+          $cart_detail[$i]['precio'] = $name[0]['precio'];
+
+          $cart_detail[$i]['id_pro'] = $keys_cart[$i];
+          $cart_detail[$i]['cantidad'] = $cart_session[ $keys_cart[$i] ]['unidades'];
+          $cart_detail[$i]['usuario'] = $correo_user;
+          $cart_detail[$i]['slug'] = 'cart/';
+        }
+      }
+      return $cart_detail;
     }
 
 //    /**

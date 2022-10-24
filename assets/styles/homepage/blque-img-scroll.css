@@ -1,0 +1,28 @@
+.section-img-scroll-text {
+  margin-top: 5%;
+  background-position: center center!important;
+  background-size: cover!important;
+  background-repeat: no-repeat !important;
+  display: flex;
+  height: 700px;
+  position: relative;
+  overflow: hidden;
+}
+.section-img-scroll-text .title-section {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 55px;
+  text-align: center;
+  width: 320px;
+}
+.section-img-scroll-text .container-img-brands {
+  align-items: center;
+  display: flex;
+  position: absolute;
+  top: 45%;
+  right: 40%;
+  width: 100%;
+}
+.section-img-scroll-text .container-img-brands .brand-img {
+  margin-right: 120px;
+}

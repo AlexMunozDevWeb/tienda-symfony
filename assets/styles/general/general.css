@@ -1,6 +1,9 @@
 * {
   font-family: 'Roboto Slab', serif;
 }
+body {
+  position: relative;
+}
 .h1 {
   font-size: 44px;
   font-weight: 700;
@@ -13,6 +16,14 @@
   font-size: 25px;
   font-weight: 700;
 }
+.h4 {
+  color: hsl(26, 100%, 55%);
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 31px;
+  border-bottom: 1px solid hsl(220, 14%, 75%);
+}
 span {
   font-family: 'Roboto Slab', serif;
 }
@@ -21,11 +32,14 @@ span.company-orange {
   font-size: 20px;
   font-weight: 600;
 }
-p.description {
+.description {
   font-size: 15px;
   color: hsl(219, 9%, 45%);
   font-weight: 400;
   line-height: 24px;
+}
+.description.bold {
+  font-weight: 600;
 }
 p.price {
   color: hsl(220, 13%, 13%);
@@ -37,6 +51,36 @@ p.price {
 }
 .para-medium {
   font-size: 16px;
+}
+.f-orange {
+  color: hsl(26, 100%, 55%);
+}
+.f-pale-orange {
+  color: hsl(25, 100%, 94%);
+}
+.f-dark-blue {
+  color: hsl(220, 13%, 13%);
+}
+.f-dark-grayish-blue {
+  color: hsl(219, 9%, 45%);
+}
+.f-grayish-blue {
+  color: hsl(220, 14%, 75%);
+}
+.f-light-grayish-blue {
+  color: hsl(223, 64%, 98%);
+}
+.f-white {
+  color: hsl(0, 0%, 100%);
+}
+.f-black {
+  color: hsl(0, 0%, 0%);
+}
+.b-g-blue {
+  border-bottom: 1px solid hsl(220, 14%, 75%);
+}
+.border-none {
+  border: unset!important;
 }
 a {
   color: hsl(0, 0%, 0%);
@@ -62,11 +106,92 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+.standard-link {
+  background-color: hsl(26, 100%, 55%);
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: unset;
+  color: hsl(0, 0%, 100%);
+  cursor: pointer;
+  font-weight: 600;
+  height: 50px;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.standard-link:hover {
+  opacity: 0.7;
+}
 .sn-container {
   padding: 0 10%;
+}
+.p-0 {
+  padding: 0!important;
 }
 @media screen and (max-width: 768px) {
   .sn-container {
     padding: 0 5%;
   }
+}
+form {
+  border: 2px solid hsl(26, 100%, 55%);
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 20px 20px 0 20px;
+  margin-top: 30px;
+  width: 100%;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group label {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.form-group input {
+  background-color: hsl(223, 64%, 98%);
+  font-size: 14px;
+  box-sizing: border-box;
+  border: unset;
+  border-radius: 10px;
+  height: 50px;
+  text-align: center;
+  width: 100%;
+}
+.form-group input:focus {
+  outline: none;
+}
+.form-group textarea {
+  background-color: hsl(223, 64%, 98%);
+  font-size: 14px;
+  box-sizing: border-box;
+  border: unset;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  resize: none;
+  width: 100%;
+}
+.form-group textarea:focus {
+  outline: none;
+}
+.form-group .btn-form {
+  border: unset;
+  border-radius: 10px;
+  background-color: hsl(26, 100%, 55%);
+  box-sizing: border-box;
+  color: hsl(0, 0%, 100%);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 10px 0;
+  width: 100%;
+  height: 50px;
+  transition: all 0.3s ease-in-out;
+}
+.form-group .btn-form:hover {
+  opacity: 0.7;
 }

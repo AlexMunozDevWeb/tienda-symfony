@@ -30,21 +30,15 @@ class HomepageController extends AbstractController
   {
     
     //Datos homepage
-    $products = $this->em->getRepository( Productos::class )->getAllProducts();
-    $productsCategories = $this->em->getRepository( Productos::class )->getAllProductsCatsId();
     $session_started = $this->em->getRepository( Usuarios::class )->checkSessionStart( $sess );
-    
-    //Añadir imagen
-    for ($i=0; $i < count( $products ); $i++) { 
-      $img = $this->em->getRepository( Imagenes::class )->getImgsProducts( $products[$i]['id'] );
-      array_push( $products[$i], $img );
-    }
+
+    $cart_detail = $this->em->getRepository( Productos::class )->getCart( $sess );
 
     return $this->render('homepage/index.html.twig', [
-      'products_categories' => $productsCategories,
-      'products' => $products,
+      
       'session_started' => $session_started,
-      'session' => $sess,
+      'cart_empty' => $sess->has('carrito'),
+      'quantity_products' => $sess->has( 'carrito' ) ? count($cart_detail) : '',
     ]);
   }
 }

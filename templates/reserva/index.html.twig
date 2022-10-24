@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reserva{% endblock %}
+
+{% block body %}
+
+  {% set vars = {'var_session': session_started, 'carrito': cart_empty, 'num_products': quantity_products } %}
+  {% include 'menu/index.html.twig' with vars %}
+
+  <section class="sn-container reserva-container">
+    <div class="content-section">
+      <div class="form-container">
+        <form action="{{ path('app_send_reserva') }}" method="POST">
+
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" name="name" required>
+          </div>
+
+          <div class="form-group">
+            <label>Apellidos</label>
+            <input type="text" name="surname" required>
+          </div>
+          
+          <div class="form-group">
+            <label>Correo</label>
+            <input type="text" name="correo" required>
+          </div>
+          
+          <div class="form-group">
+            <input type="hidden" name="product" value="{{ data['name'] }}">
+            <input class="btn-form" class="" type="submit" value="Enviar">
+          </div>
+        </form>
+      </div>
+
+      <div class="content-container">
+        <div class="order-container">
+          <h2 class="h2 f-black b-g-blue">{{ data['name'] }}</h2>
+          <p class="description">{{ data['description'] }}</p>
+        </div>
+        <div class="img-container" style="background-image: url( {{ asset( data['url_img'] ) }} );"></div>
+      </div>
+
+    </div>
+  </section>
+
+{% endblock %}
