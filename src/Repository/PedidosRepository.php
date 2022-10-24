@@ -49,13 +49,13 @@ class PedidosRepository extends ServiceEntityRepository
         return $this->redirectToRoute('cart_checkout');
       }else {
         // dd($cart_detail);
+        //Pedidos
+        $pedido = new Pedidos();
+        $pedido->setFecha( new DateTime() );
+        $pedido->setEnviado( 0 );
+        $pedido->setIdUsuario( $em->getRepository( Usuarios::class )->find( $cart_detail[0]['usuario_id'] ) );
+        $em->persist( $pedido );
         for ($i=0; $i < count( $cart_detail ) ; $i++) { 
-          //Pedidos
-          $pedido = new Pedidos();
-          $pedido->setFecha( new DateTime() );
-          $pedido->setEnviado( 0 );
-          $pedido->setIdUsuario( $em->getRepository( Usuarios::class )->find( $cart_detail[$i]['usuario_id'] ) );
-          $em->persist( $pedido );
           
           //ProductosPedidos
           $productos_pedidos = new ProductosPedidos();
