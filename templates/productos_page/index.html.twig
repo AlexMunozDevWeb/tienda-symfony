@@ -37,7 +37,7 @@
           <form action="{{ path('app_cart') }}" method="post">
             <div class="amount">
               <input id="minus" class="minus" type="button" name="minus" value="-">
-              <input id="quantity" class="quantity" type="number" name="quantity" value="0" min="0" max="{{ stock[0]['stock'] }}">
+              <input id="quantity" class="quantity" type="number" name="quantity" value="1" min="1" max="{{ stock[0]['stock'] }}">
               <input id="sum" class="sum" type="button" name="sum" value="+">
               <input type="hidden" name="id_pro" value="{{ product.id }}">
             </div>
@@ -104,7 +104,7 @@
     })
 
     $('#minus').on('click', function () {
-      if ( $('#quantity').val() > 0 ) {
+      if ( $('#quantity').val() > 1 ) {
         $('#quantity').val( $('#quantity').val() - 1 );
       }
     })
@@ -112,7 +112,7 @@
     $('#sum').on('click', function () {
       var max_value = parseInt($( '#quantity' ).attr( 'max' ));
       var quantity = parseInt($('#quantity').val()); 
-      if ( quantity >= 0 && quantity < max_value ) {
+      if ( quantity >= 1 && quantity < max_value ) {
         quantity++;
         $('#quantity').val( quantity );
       }
