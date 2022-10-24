@@ -46,11 +46,19 @@
     <div class="content-menu-mobile">
       <img class="close-icon" id="close-menu-mobile" src="{{ asset( 'images/icon-close.svg' ) }}" alt="">
       <ul class="links-mobile">
-        <li><a href="#" class="single-link" >zapatillas</a></li>
-        <li><a href="#" class="single-link" >About</a></li>
-        <li><a href="#" class="single-link" >Contact</a></li>
+        <li><a href="{{ url('app_tienda') }}" class="single-link" >Tienda</a></li>
+        <li><a href="{{ url('app_contacto') }}" class="single-link" >Contacto</a></li>
       </ul>
     </div>
   </div>
 </header>
+
+{% block javascripts %}
+  <script>
+    //Abrir carrito
+    $( '.user-link-photo' ).on( 'click', function () {
+      $( '.close-session' ).toggleClass( 'open' );
+    } );
+  </script>
+{% endblock %}
 

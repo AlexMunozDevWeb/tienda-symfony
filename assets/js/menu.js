@@ -1,13 +1,6 @@
 
-//Abrir carrito
-$( '.user-link-photo' ).on( 'click', function () {
-  $( '.close-session' ).toggleClass( 'open' );
-} );
-
-
 //Abrir menu
 $( '#open-menu-mobile' ).on( 'click', function () {
-  console.log('abrir');
   $( '.menu-mobile' ).addClass( 'open' );
 } );
 

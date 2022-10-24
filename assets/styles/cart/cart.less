@@ -77,6 +77,13 @@ section.cart-section-container{
       width: 100%;
       form{
         width: 30%;
+        .total-bill {
+          color: @dark-grayish-blue;
+          font-size: 16px;  
+          margin-bottom: 20px;
+          text-align: right;
+          font-weight: 600;
+        }
         .btn-checkout{
           background-color: hsl(26, 100%, 55%);
           box-sizing: border-box;
@@ -97,6 +104,15 @@ section.cart-section-container{
     .empty-cart{
       color: @dark-grayish-blue;
       font-weight: 700;
+    }
+  }
+}
+@media ( max-width: 768px ) {
+  section.cart-section-container{
+    .form-checkout{
+      form{
+        width: 100%!important;
+      }
     }
   }
 }

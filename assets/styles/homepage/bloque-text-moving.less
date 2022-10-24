@@ -1,6 +1,6 @@
 .section-text-button{
   position: relative;
-  padding: 5% 0;
+  padding: 10% 0 0 0;
   .line-wrapper{
     display: flex;
     flex-direction: column;
@@ -12,8 +12,9 @@
       font-weight: 500;
       font-size: 20px;
       .line{
-        white-space: nowrap;
         animation: lineInfiniteAnim 60s infinite linear;
+        font-size: 26px;
+        white-space: nowrap;
       }
     }
     &.no-animation-text{
@@ -23,5 +24,8 @@
         animation: none;
       }
     }
+  }
+  @media ( max-width: 768px ) {
+    padding-top: 5%;
   }
 }
