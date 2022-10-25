@@ -19,6 +19,17 @@ section.panel-user-container{
       a.link-panel-user{
         display: block;
         margin: 20px 0;
+        position: relative;
+        width: fit-content;
+        &.active::after{
+          content: '';
+          position: absolute;
+          height: 2px;
+          background-color: @orange;
+          top: 19px;
+          left: 0;
+          width: 100%;
+        }
       }
     }
     .content-panel-user{
