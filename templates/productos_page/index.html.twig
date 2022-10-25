@@ -118,5 +118,17 @@
       }
     })
 
+    $( '.swiper-single-product .slide-single-product .single-img' ).on( 'click', function(){
+      var src_to_load = $(this).attr('src');
+      $( '.img-container .main-single-img' ).attr( 'src', src_to_load );
+      $( '.loupe img' ).attr( 'src', src_to_load );
+    })
+
+    $('.img-container .main-single-img').loupe({
+      width: 250, // width of magnifier
+      height: 250, // height of magnifier
+      loupe: 'loupe' // css class for magnifier
+    });
+    
   </script>
 {% endblock %}

@@ -228,3 +228,7 @@ form {
 .pop-up-general .box-pop-up a.standard-link {
   margin-top: 20px;
 }
+.loupe {
+  border: 2px solid hsl(26, 100%, 55%);
+  border-radius: 10px;
+}
