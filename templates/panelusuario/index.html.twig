@@ -14,7 +14,8 @@
         <a class="link-panel-user" href="{{ url('app_logout') }}">Cerrar sesión</a>
       </div>
       <div class="content-panel-user">
-        <div class="info-user-content active">
+
+        <div class="info-user-content ">
           <h2 class="h3">Información de usuario</h2>
           <form action="{{ path('app_panelusuario_modify') }}" method="post">
             <div class="form-group">
@@ -39,7 +40,33 @@
             </div>
           </form>
         </div>
-        <div class="orders-info">info orders</div>
+
+        <div class="orders-info active">
+          <h2 class="h3">Información de pedidos</h2>
+          {% for key, order in user_orders %}
+            <div class="order-line">
+              <div class="date-send">
+                <p class="date">{{ key + 1 }} # {{ order[0]['fecha'] }}</p>
+                <p class="send-option {{ (order[0]['enviado']) ? 'send' : 'no-send' }}">{{ (order[0]['enviado']) ? 'Enviado' : 'No enviado' }}</p>
+              </div>
+              {% set total = 0 %}
+              {% for product in user_orders[key] %}
+                <div class="product-line">
+                  <div class="name">
+                    <p class="p-name">{{ product['nombre'] }}</p>
+                  </div>
+                  <div class="price">
+                    <span>{{ product['precio'] }} € x {{ product['unidades'] }}</span>
+                  </div>
+                </div>
+                {% set total = total + ( product['precio'] * product['unidades'] ) %}
+              {% endfor %}
+              <div class="total">
+                <p>Total: {{ total }} €</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
   </section>

@@ -113,14 +113,6 @@ class UsuariosRepository extends ServiceEntityRepository implements PasswordUpgr
      */
     public function updateUser(  $address, $cp, $city, $country, $id, $em  ){
       //Actualizar usuario
-      // $conn = $this->getEntityManager()->getConnection();
-      // $sql = "UPDATE usuarios u
-      // SET direccion = 'avenida'
-      // where id = 1";
-      // $stmt = $conn->prepare($sql);
-      // $resultSet = $stmt->executeQuery();
-      // return $resultSet->fetchAllAssociative();
-
       $query = $em->createQuery(
         "UPDATE App\Entity\Usuarios u
           SET u.direccion = '$address',

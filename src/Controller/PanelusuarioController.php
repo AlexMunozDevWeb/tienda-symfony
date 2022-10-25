@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Pedidos;
 use App\Entity\Productos;
 use App\Entity\Usuarios;
 use Doctrine\ORM\EntityManagerInterface;
@@ -34,11 +35,15 @@ class PanelusuarioController extends AbstractController
     $user_email = $session->get('correo');
     $info_user = $this->em->getRepository( Usuarios::class )->getUserInfo( $user_email );
 
+    //Get user orders
+    $user_orders = $this->em->getRepository( Pedidos::class )->getUserOrders( $session->get('correo') );
+
     return $this->render('panelusuario/index.html.twig', [
       'session_started'   => $session_started,
       'cart_empty'        => $session->has('carrito'),
       'quantity_products' => $session->has( 'carrito' ) ? count($cart_detail) : '',
       'info_user'         => $info_user,
+      'user_orders'       => $user_orders,
     ]);
   }
 
