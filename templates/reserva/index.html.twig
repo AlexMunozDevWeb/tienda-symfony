@@ -41,8 +41,15 @@
         </div>
         <div class="img-container" style="background-image: url( {{ asset( data['url_img'] ) }} );"></div>
       </div>
-
     </div>
+    {% if send_order == 'true' %}
+    <div class="pop-up-general">
+      <div class="box-pop-up">
+        <p>Reserva completada</p>
+        <a class="standard-link" href="/">Salir</a>
+      </div>
+    </div>
+    {% endif %}
   </section>
 
 {% endblock %}

@@ -22,9 +22,12 @@ class ReservaController extends AbstractController
     $this->em = $em;  
   }
 
-  #[Route('/reserva/{name}', name: 'app_reserva')]
-  public function index( SessionInterface $session, $name ): Response
+  #[Route('/reserva/{name}/{opc}?', name: 'app_reserva')]
+  public function index( SessionInterface $session, $name, $opc = 'false' ): Response
   {
+    if ( isset( $_GET[ 'opc' ] ) ) {
+      $opc = 'true';
+    }
 
     $data = array();
 
@@ -35,8 +38,8 @@ class ReservaController extends AbstractController
         'url_img'     =>  'images/new/new-product-1.jpg',
       ];
     }
-
-    if ( $name === 'giannis' ) {
+  
+    if ( $name === 'giannis' || $name === 'Giannis immortality2') {
       $data = [ 
         'name'        => 'Giannis immortality2', 
         'description' => 'Pensada para personas con gran personalidad. Con una suela oversized de la casa Vibram de 3,5cm y materiales como el SEAQUAL YARN son un claro ejemplo de la moda sostenible del futuro. Además incorpora una plantilla 100% reciclada. El sistema de cordones está inspirado en las zapatillas de trail running modernas para otorgarle un aire más deportivo.',
@@ -52,6 +55,7 @@ class ReservaController extends AbstractController
       'session_started'   => $session_started,
       'cart_empty'        => $session->has('carrito'),
       'quantity_products' => $session->has( 'carrito' ) ? count($cart_detail) : '',
+      'send_order'        => $opc,
     ]);
 
   }
@@ -67,7 +71,7 @@ class ReservaController extends AbstractController
       $this->em->getRepository( Reserva::class )->addReserva( $name, $surname, $email, $product, $this->em );
     }
 
-    return $this->redirectToRoute('app_homepage');
+    return $this->redirectToRoute('app_reserva', array( 'name' => $product, 'opc' => 'done' ));
   }
 
 }
