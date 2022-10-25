@@ -1,0 +1,21 @@
+.section-text-button {
+  position: relative;
+  padding: 5% 0;
+}
+.section-text-button .line-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+.section-text-button .line-wrapper .link-text .line {
+  white-space: nowrap;
+  animation: lineInfiniteAnim 80s infinite linear;
+}
+.section-text-button .line-wrapper.no-animation-text {
+  overflow: unset;
+}
+.section-text-button .line-wrapper.no-animation-text .line {
+  white-space: unset;
+  animation: none;
+}

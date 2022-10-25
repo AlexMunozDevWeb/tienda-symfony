@@ -10,9 +10,8 @@
         <img class="img-title" src="{{ asset( 'images/logo.svg' ) }}" alt="Logo">
       </a>
       <ul class="menu-links">
-        <li><a href="#" class="single-link" >zapatillas</a></li>
-        <li><a href="#" class="single-link" >About</a></li>
-        <li><a href="#" class="single-link" >Contact</a></li>
+        <li><a href="{{ url('app_tienda') }}" class="single-link" >Tienda</a></li>
+        <li><a href="{{ url('app_contacto') }}" class="single-link" >Contacto</a></li>
       </ul>
     </div>
     <div class="right-side-menu">
@@ -29,10 +28,9 @@
   
       {% if session_started %}
         <div class="user-link-photo">
-          <img class="icon-user-photo" src="{{ asset('images/image-avatar.png') }}">
-          <div class="close-session">
-            <a class="link-logout" href="{{ url('app_logout') }}">Cerrar sesión.</a>
-          </div>
+          <a class="img-link" href="{{ url('app_panelusuario') }}">
+            <img class="icon-user-photo" src="{{ asset('images/image-avatar.png') }}">
+          </a>
         </div>
       {% endif %}
       {% if session_started == false %}
@@ -47,11 +45,35 @@
     <div class="content-menu-mobile">
       <img class="close-icon" id="close-menu-mobile" src="{{ asset( 'images/icon-close.svg' ) }}" alt="">
       <ul class="links-mobile">
-        <li><a href="#" class="single-link" >zapatillas</a></li>
-        <li><a href="#" class="single-link" >About</a></li>
-        <li><a href="#" class="single-link" >Contact</a></li>
+        <li><a href="{{ url('app_tienda') }}" class="single-link" >Tienda</a></li>
+        <li><a href="{{ url('app_contacto') }}" class="single-link" >Contacto</a></li>
       </ul>
     </div>
   </div>
 </header>
+
+{% block javascripts %}
+  <script>
+    //Abrir carrito
+    $( '.user-link-photo' ).on( 'click', function () {
+      $( '.close-session' ).toggleClass( 'open' );
+    } );
+    
+    //Al hacer scroll el menu se hace mas pequeño
+    jQuery(window).scroll(function() {
+
+      let altura = jQuery(window).scrollTop();
+      let altura_navegacion = jQuery('.menu-section').height();
+
+      if(!jQuery('.menu-section').hasClass('scroll') && altura > altura_navegacion){
+        jQuery('.menu-section').toggleClass('scroll');
+      }
+      
+      if(jQuery('.menu-section').hasClass('scroll')  && altura <= altura_navegacion){
+        jQuery('.menu-section').toggleClass('scroll');
+      }
+      
+    });
+  </script>
+{% endblock %}
 

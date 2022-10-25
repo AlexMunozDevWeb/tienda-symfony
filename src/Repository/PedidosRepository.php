@@ -49,13 +49,13 @@ class PedidosRepository extends ServiceEntityRepository
         return $this->redirectToRoute('cart_checkout');
       }else {
         // dd($cart_detail);
+        //Pedidos
+        $pedido = new Pedidos();
+        $pedido->setFecha( new DateTime() );
+        $pedido->setEnviado( 0 );
+        $pedido->setIdUsuario( $em->getRepository( Usuarios::class )->find( $cart_detail[0]['usuario_id'] ) );
+        $em->persist( $pedido );
         for ($i=0; $i < count( $cart_detail ) ; $i++) { 
-          //Pedidos
-          $pedido = new Pedidos();
-          $pedido->setFecha( new DateTime() );
-          $pedido->setEnviado( 0 );
-          $pedido->setIdUsuario( $em->getRepository( Usuarios::class )->find( $cart_detail[$i]['usuario_id'] ) );
-          $em->persist( $pedido );
           
           //ProductosPedidos
           $productos_pedidos = new ProductosPedidos();
@@ -84,6 +84,39 @@ class PedidosRepository extends ServiceEntityRepository
         }
 
       }
+
+    }
+
+    /**
+     * Obtiene los pedidos de un usuario
+     */
+    public function getUserOrders( $correo ){
+      $conn = $this->getEntityManager()->getConnection();
+      $sql = "SELECT p.id
+              FROM pedidos p
+              WHERE p.id_usuario_id = ( SELECT u.id 
+                                        FROM usuarios u  
+                                        WHERE u.correo = '$correo')";
+      $stmt = $conn->prepare($sql);
+      $resultSet = $stmt->executeQuery();
+      $getting_id_pedidos = $resultSet->fetchAllAssociative();
+
+      $data_orders = array();
+      for ($i=0; $i < count($getting_id_pedidos); $i++) { 
+        $id_pedido = $getting_id_pedidos[$i]['id'];
+        $conn = $this->getEntityManager()->getConnection();
+        $sql = "SELECT p.nombre, p.precio, pp.unidades, ped.fecha, ped.enviado
+                FROM productos as p
+                INNER JOIN productos_pedidos as pp ON pp.cod_producto_id = p.id
+                INNER JOIN pedidos as ped ON ped.id = pp.cod_pedido_id 
+                                          WHERE ped.id = '$id_pedido';";
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery();
+        $getting_details = $resultSet->fetchAllAssociative();
+        array_push( $data_orders, $getting_details );
+      }
+
+      return $data_orders;
 
     }
 

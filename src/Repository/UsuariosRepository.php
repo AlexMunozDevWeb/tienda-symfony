@@ -97,6 +97,34 @@ class UsuariosRepository extends ServiceEntityRepository implements PasswordUpgr
       }
     }
 
+    /**
+     * Get info of a user
+     */
+    public function getUserInfo( $email ){
+      $conn = $this->getEntityManager()->getConnection();
+      $sql = "SELECT * FROM usuarios WHERE correo = '$email'";
+      $stmt = $conn->prepare($sql);
+      $resultSet = $stmt->executeQuery();
+      return $resultSet->fetchAllAssociative();
+    }
+
+    /**
+     * Actualiza el usuario
+     */
+    public function updateUser(  $address, $cp, $city, $country, $id, $em  ){
+      //Actualizar usuario
+      $query = $em->createQuery(
+        "UPDATE App\Entity\Usuarios u
+          SET u.direccion = '$address',
+              u.CP = '$cp',
+              u.ciudad = '$city',
+              u.pais = '$country' 
+          WHERE u.id = '$id'"
+      );
+      $query->getResult();
+      $em->flush();
+    }
+
 //    /**
 //     * @return Usuarios[] Returns an array of Usuarios objects
 //     */

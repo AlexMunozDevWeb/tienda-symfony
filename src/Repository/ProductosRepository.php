@@ -39,6 +39,9 @@ class ProductosRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * Get all products id categories
+     */
     public function getAllProductsCatsId(){
       $conn = $this->getEntityManager()->getConnection();
       $sql = 'SELECT cat.id as id, cat.nombre, IFNULL( products.cantidad, 0 ) as cantidad
@@ -52,6 +55,10 @@ class ProductosRepository extends ServiceEntityRepository
       $resultSet = $stmt->executeQuery();
       return $resultSet->fetchAllAssociative();
     }
+
+    /** 
+     * Get all products
+    */
     public function getAllProducts(){
       $conn = $this->getEntityManager()->getConnection();
       $sql = 'SELECT * FROM productos';
@@ -59,9 +66,41 @@ class ProductosRepository extends ServiceEntityRepository
       $resultSet = $stmt->executeQuery();
       return $resultSet->fetchAllAssociative();
     }
+
+    /**
+     * Get the product stock
+     */
     public function getProductStock( $id ){
       $conn = $this->getEntityManager()->getConnection();
       $sql = "SELECT stock FROM productos WHERE id = '$id'";
+      $stmt = $conn->prepare($sql);
+      $resultSet = $stmt->executeQuery();
+      return $resultSet->fetchAllAssociative();
+    }
+
+    /**
+     * Get the 4 product most sold
+     */
+    public function mostSellProducts(){
+      $conn = $this->getEntityManager()->getConnection();
+      $sql = "SELECT distinct( productos_pedidos.cod_producto_id ) as id, 
+                     count( productos_pedidos.cod_producto_id) as numPedidos
+              FROM productos_pedidos
+              GROUP BY productos_pedidos.cod_producto_id
+              ORDER BY numPedidos desc
+              LIMIT 4";
+      $stmt = $conn->prepare($sql);
+      $resultSet = $stmt->executeQuery();
+      return $resultSet->fetchAllAssociative();
+    }
+
+    /**
+     * Get name of a product
+     */
+    
+    public function getNameProduct( $id ){
+      $conn = $this->getEntityManager()->getConnection();
+      $sql = "SELECT productos.nombre FROM productos WHERE productos.id = '$id'";
       $stmt = $conn->prepare($sql);
       $resultSet = $stmt->executeQuery();
       return $resultSet->fetchAllAssociative();

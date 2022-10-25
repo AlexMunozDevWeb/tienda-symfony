@@ -16,3 +16,18 @@ cart_checkout:
    path: /cart/checkout
    controller: App\Controller\CartController::checkout
    methods: POST
+
+app_send_msn:
+   path: /contacto/enviar
+   controller: App\Controller\ContactoController::send
+   methods: POST
+
+app_reserva:
+   path: /reserva/{name}
+   controller: App\Controller\ReservaController::index
+   methods: GET
+
+app_send_reserva:
+   path: /reserva/enviar
+   controller: App\Controller\ReservaController::send
+   methods: POST

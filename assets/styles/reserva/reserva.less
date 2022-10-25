@@ -1,0 +1,48 @@
+
+section.reserva-container{
+  padding-top: 80px;
+  .content-section{
+    border-top: 1px solid @grayish-blue;
+    display: grid;
+    grid-template-columns: repeat( 2, 1fr );
+    grid-gap: 30px;
+    padding-top: 10%;
+    .form-container{
+      form{
+        margin-top: 0;
+      }
+    }
+    .content-container{
+      .order-container{
+        h2.h2{
+          margin-top: 0;
+        }
+      }
+      .img-container{
+        background-size: cover;
+        background-position: center center;
+        border-bottom-left-radius: 70px;
+        border-top-right-radius: 70px;
+        height: 400px;
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .content-section{
+      padding-top: 5%;
+    }
+  }
+
+  @media (max-width: 868px) {
+    .form-container{
+      order: 2;
+    }
+    .content-section{
+      padding-top: 5%;
+      grid-template-columns: repeat( 1, 1fr );
+      order: 1;
+    }
+  }
+
+}
