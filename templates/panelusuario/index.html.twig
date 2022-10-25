@@ -9,13 +9,13 @@
   <section class="sn-container panel-user-container">
     <div class="panel-user-wrapper">
       <div class="menu-user-container">
-        <a class="link-panel-user" id="info-user" href="#">Información de usuario</a>
+        <a class="link-panel-user active" id="info-user" href="#">Información de usuario</a>
         <a class="link-panel-user" id="order-user" href="#">Pedidos</a>
         <a class="link-panel-user" href="{{ url('app_logout') }}">Cerrar sesión</a>
       </div>
       <div class="content-panel-user">
 
-        <div class="info-user-content ">
+        <div class="info-user-content active">
           <h2 class="h3">Información de usuario</h2>
           <form action="{{ path('app_panelusuario_modify') }}" method="post">
             <div class="form-group">
@@ -41,13 +41,13 @@
           </form>
         </div>
 
-        <div class="orders-info active">
+        <div class="orders-info">
           <h2 class="h3">Información de pedidos</h2>
           {% for key, order in user_orders %}
             <div class="order-line">
               <div class="date-send">
                 <p class="date">{{ key + 1 }} # {{ order[0]['fecha'] }}</p>
-                <p class="send-option {{ (order[0]['enviado']) ? 'send' : 'no-send' }}">{{ (order[0]['enviado']) ? 'Enviado' : 'No enviado' }}</p>
+                <p class="send-option {{ (order[0]['enviado']) ? 'send' : 'no-send' }}">{{ (order[0]['enviado']) ? 'Entregado' : 'No entregado' }}</p>
               </div>
               {% set total = 0 %}
               {% for product in user_orders[key] %}
@@ -80,6 +80,9 @@
       if( !$( '.info-user-content' ).hasClass( 'active') ){
         $( '.info-user-content' ).toggleClass('active')
         $( '.orders-info' ).toggleClass('active')
+
+        $( '#info-user' ).toggleClass('active');
+        $( '#order-user' ).toggleClass('active');
       }
     });
 
@@ -87,6 +90,9 @@
       if( !$( '.orders-info' ).hasClass( 'active') ){
         $( '.info-user-content' ).toggleClass('active')
         $( '.orders-info' ).toggleClass('active')
+
+        $( '#info-user' ).toggleClass('active');
+        $( '#order-user' ).toggleClass('active');
       }
     });
 

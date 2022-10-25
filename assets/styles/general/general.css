@@ -179,6 +179,19 @@ form {
 .form-group textarea:focus {
   outline: none;
 }
+.form-group select {
+  appearance: none;
+  background-color: hsl(223, 64%, 98%);
+  border: 1px solid hsl(220, 13%, 13%);
+  border-radius: 10px;
+  cursor: pointer;
+  height: 50px;
+  text-align: center;
+  width: 100%;
+}
+.form-group select:focus {
+  outline: none;
+}
 .form-group .btn-form {
   border: unset;
   border-radius: 10px;
@@ -194,4 +207,41 @@ form {
 }
 .form-group .btn-form:hover {
   opacity: 0.7;
+}
+.pop-up-general {
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 9, 0.7);
+  backdrop-filter: blur(2px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  padding-top: calc(50vh - 70px);
+}
+.pop-up-general .box-pop-up {
+  background-color: hsl(0, 0%, 100%);
+  border: 2px solid hsl(26, 100%, 55%);
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 20px;
+  height: fit-content;
+  width: 300px;
+}
+.pop-up-general .box-pop-up p {
+  color: hsl(219, 9%, 45%);
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+}
+.pop-up-general .box-pop-up a.standard-link {
+  margin-top: 20px;
+}
+.loupe {
+  border: 2px solid hsl(26, 100%, 55%);
+  border-radius: 10px;
 }
