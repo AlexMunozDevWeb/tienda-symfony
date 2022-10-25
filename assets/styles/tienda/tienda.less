@@ -1,48 +1,74 @@
-section.show-productos{
+section.show-products{
+  display: grid;
+  grid-template-columns: repeat( 4, 1fr );
+  grid-gap: 30px;
   margin-bottom: 50px;
   padding-top: 80px;
-  .content-sliders{
-    padding-top: 50px;
+  .search{
+    grid-column-start: 1;
+    grid-column-end: 1;
+    padding-top: 30px;
     h2.h2{
       border-bottom: 1px solid @grayish-blue;
     }
-    .swiper-home-product{
-      height: fit-content;
-      .wrapper-home-products{
-        .slide-home-products{
-          a.link-product{
-            width: 100%;
-            height: 100%;
-            margin:auto;
-            display:block;
-            position: relative;
-            &:hover{
-              .producto-name{
-                transform: translateY(10px);
-              }
-            }
-            .producto-name{
-              position: absolute;
-              left: 0;
-              top: 15px;
+  }
+  .shop{
+    grid-column-start: 2;
+    grid-column-end: 5;
+    .content-sliders{
+      padding-top: 30px;
+      h2.h2{
+        border-bottom: 1px solid @grayish-blue;
+      }
+      .swiper-home-product{
+        height: fit-content;
+        .wrapper-home-products{
+          .slide-home-products{
+            a.link-product{
+              width: 100%;
               height: 100%;
-              width: 100%;
-              display: flex;
-              justify-content: center;
-              transition: all .4s ease-in-out;
-              transform: translateY(-35px);
-            }
-            .single-img{
-              box-sizing: border-box;
-              border: 2px solid @orange;
-              border-radius: 10px;
-              width: 100%;
-              height: auto;
-              max-height: 300px;
-              object-fit: cover;
+              margin:auto;
+              display:block;
+              position: relative;
+              &:hover{
+                .producto-name{
+                  transform: translateY(7px);
+                }
+              }
+              .producto-name{
+                position: absolute;
+                left: 5%;
+                top: 15px;
+                height: 100%;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                transition: all .4s ease-in-out;
+                transform: translateY(-55px);
+                text-align: center;
+                width: 90%;
+              }
+              .single-img{
+                box-sizing: border-box;
+                border: 2px solid @orange;
+                border-radius: 10px;
+                width: 100%;
+                height: auto;
+                max-height: 300px;
+                object-fit: cover;
+              }
             }
           }
         }
+      }
+    }
+  }
+  @media ( max-width: 768px ) {
+    display: flex;
+    flex-direction: column;
+    .shop{
+      .content-sliders{
+        padding-top: 0;
       }
     }
   }

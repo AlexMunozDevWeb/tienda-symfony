@@ -6,29 +6,48 @@
 
   {% set vars = {'var_session': session_started, 'carrito': cart_empty, 'num_products': quantity_products } %}
   {% include 'menu/index.html.twig' with vars %}
-
-  <section class="sn-container show-productos">
-  {% for pro_cat in products_categories %}
-    <div class="content-sliders">
-      <h2 class="h2">{{ pro_cat.nombre }}</h2>
-
-      <div class="swiper swiper-home-product">
-        <div class="swiper-wrapper wrapper-home-products">
-          {% for product in products %}
-            {% if product.id_cat_id == pro_cat.id %}
-              <div class="swiper-slide slide-home-products" >
-                <a class="link-product" href="/productos/{{ product.id }}">
-                  <span class="producto-name">{{ product.nombre }}</span>
-                  <img class="single-img" src="{{ asset( product[0][0]['url'] ) }}">
-                </a>
-              </div>
-            {% endif %}
-          {% endfor %}  
+  <section class="sn-container show-products">
+    <div class="search">
+      <h2 class="h2">Buscador</h2>
+      <form>
+        <div class="form-group">
+          <label class="categories">Categorias</label>
+          <select name="categories" id="categories">
+              <option value="">Selecciona</option>
+            {% for cat in products_categories %}
+              <option value="{{ cat['nombre'] }}">{{ cat['nombre'] }}</option>
+            {% endfor %}
+          </select>
         </div>
-      </div>
-
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" id="name-product">
+        </div>
+      </form>
     </div>
-  {% endfor %}
+    <div class="shop">
+    {% for pro_cat in products_categories %}
+      <div class="content-sliders animate__animated animate__bounceInRight" data-category='{{ pro_cat.nombre }}'>
+        <h2 class="h2">{{ pro_cat.nombre }}</h2>
+
+        <div class="swiper swiper-home-product">
+          <div class="swiper-wrapper wrapper-home-products">
+            {% for product in products %}
+              {% if product.id_cat_id == pro_cat.id %}
+                <div class="swiper-slide slide-home-products" >
+                  <a class="link-product" href="/productos/{{ product.id }}">
+                    <span class="producto-name">{{ product.nombre|lower }}</span>
+                    <img class="single-img" src="{{ asset( product[0][0]['url'] ) }}">
+                  </a>
+                </div>
+              {% endif %}
+            {% endfor %}  
+          </div>
+        </div>
+
+      </div>
+    {% endfor %}
+    </div>
   </section>
 
 {% endblock %}
@@ -69,5 +88,46 @@
         prevEl: '.swiper-button-prev',
       },
     });
+
+    /**
+    * Filtro by category
+    */
+    var list_cat = document.getElementById('categories');
+    list_cat.addEventListener( 'change', function(){
+      filter_category( this.value );
+    });
+
+    function filter_category( cat ){
+      $( '.content-sliders' ).each(function() {
+        if( cat == ''){
+          $(this).css('display','block');
+        }else{
+          if( $(this).data('category') == cat ){
+            $(this).css('display','block');
+          }else{
+            $(this).css('display','none');
+          }
+        }       
+      });
+    }
+
+    /**
+    * Filtro by name
+    * El buscador busca por coincidencias, independientemente de la posición donde se encuentre.
+    */
+    $( "input#name-product" ).keyup(function() {
+      var to_search = $( this ).val();
+
+      $( '.slide-home-products' ).each(function() {
+        var name = $( this ).children().text(); 
+        if (name.toLowerCase().indexOf(to_search) !== -1) {
+          $( this ).css('display','block');
+        }else{
+          $( this ).css('display','none');
+        }
+      });
+
+    });
+
   </script>
 {% endblock %}

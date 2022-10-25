@@ -179,6 +179,19 @@ form {
 .form-group textarea:focus {
   outline: none;
 }
+.form-group select {
+  appearance: none;
+  background-color: hsl(223, 64%, 98%);
+  border: 1px solid hsl(220, 13%, 13%);
+  border-radius: 10px;
+  cursor: pointer;
+  height: 50px;
+  text-align: center;
+  width: 100%;
+}
+.form-group select:focus {
+  outline: none;
+}
 .form-group .btn-form {
   border: unset;
   border-radius: 10px;
