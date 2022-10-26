@@ -74,7 +74,9 @@
 {% endblock %}
 {% block javascripts %}
   <script>
-        
+    /**
+    * Swiper para las imagenes del producto
+    */    
     const swiper = new Swiper('.swiper.swiper-single-product', {
       slidesPerView: 4,
       spaceBetween: 25,
@@ -89,6 +91,9 @@
       },
     });
 
+    /**
+    * Eventos para la cantidad de unidades que se puede seleccionar
+    */
     $('#quantity').on('keyup', function () {
       var max_value = parseInt($( '#quantity' ).attr( 'max' ));
       var quantity = parseInt($('#quantity').val()); 
@@ -118,12 +123,18 @@
       }
     })
 
+    /**
+    * Pone como imagen destacada la imagen seleccionada
+    */
     $( '.swiper-single-product .slide-single-product .single-img' ).on( 'click', function(){
       var src_to_load = $(this).attr('src');
       $( '.img-container .main-single-img' ).attr( 'src', src_to_load );
       $( '.loupe img' ).attr( 'src', src_to_load );
     })
 
+    /**
+    * Lupa para la imagen del producto
+    */
     $('.img-container .main-single-img').loupe({
       width: 250, // width of magnifier
       height: 250, // height of magnifier
