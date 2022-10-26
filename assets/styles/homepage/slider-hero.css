@@ -1,5 +1,5 @@
 .section-hero {
-  height: calc(100vh - 80px);
+  height: 50vh;
   padding-top: 80px;
 }
 .section-hero .swiper-hero {
@@ -28,7 +28,7 @@
 }
 .section-hero .swiper-hero .arrow-container {
   bottom: 0;
-  left: 0;
+  left: 10%;
   position: absolute;
   height: 100px;
   width: 100%;
@@ -39,12 +39,12 @@
   cursor: pointer;
   display: flex;
   position: absolute;
-  left: calc(50% - 22px);
+  left: 0;
   top: 0;
   height: 100%;
 }
 .section-hero .swiper-hero .arrow-container a.anchor .img-go-down {
-  height: 60px;
+  height: 40px;
   filter: brightness(0) invert(0.9);
 }
 .section-hero .swiper-hero .arrow-container a.anchor:hover {
@@ -60,7 +60,8 @@
 .section-hero .swiper-hero .arrow-container .swiper-button-next::after {
   content: '';
 }
-.contenido-extra {
-  background-color: gray;
-  height: 3000px;
+@media (max-width: 768px) {
+  .section-hero .swiper-hero .arrow-container {
+    left: 5%;
+  }
 }
